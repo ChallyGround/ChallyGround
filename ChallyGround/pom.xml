@@ -11,7 +11,7 @@
 	<groupId>com.chally</groupId>
 	<artifactId>ChallyGround</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>demo</name>
+	<name>ChallyGround</name>
 	<description>ChallyGround</description>
 	<url/>
 	<licenses>
@@ -78,6 +78,11 @@
 			<artifactId>mybatis-spring-boot-starter-test</artifactId>
 			<version>3.0.3</version>
 			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.mybatis</groupId>
+			<artifactId>mybatis</artifactId>
+			<version>3.5.14</version>
 		</dependency>
 	</dependencies>
 

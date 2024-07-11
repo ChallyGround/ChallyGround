@@ -1,0 +1,72 @@
+# Eclipse project files
+# .classpath 파일과 .project 파일은 커밋/푸시해야 하므로 제외하지 않습니다.
+# .settings/ 디렉토리도 커밋/푸시합니다.
+# .metadata/는 제외합니다.
+.metadata/
+.recommenders/
+*.pydevproject
+
+# IntelliJ IDEA specific files
+.idea/
+*.iws
+*.iml
+*.ipr
+out/
+
+# STS (Spring Tool Suite) specific files
+.springBeans
+
+# Maven specific files
+log/
+ChallyGround/target/
+ChallyGround/pom.xml.tag
+ChallyGround/pom.xml.releaseBackup
+ChallyGround/pom.xml.versionsBackup
+ChallyGround/pom.xml.next
+ChallyGround/release.properties
+ChallyGround/dependency-reduced-pom.xml
+ChallyGround/buildNumber.properties
+
+# Gradle specific files (if applicable)
+.gradle/
+build/
+
+# Node specific files (if applicable)
+node_modules/
+npm-debug.log
+yarn-error.log
+
+# Environment variable files
+.env
+.env.local
+.env.*.local
+
+# OS-specific files
+.DS_Store
+Thumbs.db
+
+# 기타 임의 추가
+!ChallyGround/.mvn/wrapper/maven-wrapper.jar
+
+# Mac OS specific files
+.AppleDouble
+.LSOverride
+
+# Thumbnails
+._*
+
+# Files that might appear in the root of a volume
+.DocumentRevisions-V100
+.fseventsd
+.Spotlight-V100
+.TemporaryItems
+.Trashes
+.VolumeIcon.icns
+.com.apple.timemachine.donotpresent
+
+# Directories potentially created on remote AFP share
+.AppleDB
+.AppleDesktop
+Network Trash Folder
+Temporary Items
+.apdisk
