@@ -6,9 +6,9 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
 public class TestController {
-    @ResponseBody
-    @RequestMapping(value="/")
+
+    @RequestMapping(value="/test")
     public String sampleHome() {
-        return "Hello World!";
+        return "test.html";
     }
 }
