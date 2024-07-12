@@ -70,3 +70,7 @@ Thumbs.db
 Network Trash Folder
 Temporary Items
 .apdisk
+
+# VSCode specific files
+.vscode/
+.history/
