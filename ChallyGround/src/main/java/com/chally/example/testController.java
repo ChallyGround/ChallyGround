@@ -17,4 +17,4 @@ public class testController {
 		return "test2.html";
 	}
 }
-dkanrjsk
+dkanrjsk gpt 바보
