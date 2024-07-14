@@ -26,6 +26,14 @@ ChallyGround/pom.xml.next
 ChallyGround/release.properties
 ChallyGround/dependency-reduced-pom.xml
 ChallyGround/buildNumber.properties
+target/
+pom.xml.tag
+pom.xml.releaseBackup
+pom.xml.versionsBackup
+pom.xml.next
+release.properties
+dependency-reduced-pom.xml
+buildNumber.properties
 
 # Gradle specific files (if applicable)
 .gradle/
