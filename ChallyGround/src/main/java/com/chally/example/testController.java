@@ -17,4 +17,3 @@ public class testController {
 		return "test2.html";
 	}
 }
-충돌 테스트
