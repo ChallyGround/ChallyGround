@@ -14,6 +14,6 @@ public class testController {
 	@GetMapping("/")
 	public String sampleHome() {
 		//service.addMember();
-		return "test2.html";
+		return "index.html";
 	}
 }
