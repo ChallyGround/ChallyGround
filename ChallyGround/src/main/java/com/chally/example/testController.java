@@ -16,4 +16,12 @@ public class testController {
 		//service.addMember();
 		return "index.html";
 	}
+	
+	@RestController
+	public class HelloController {
+	    @GetMapping("/api/hello")
+	    public String getGreeting() {
+			return "어라라?";
+	    }
+	}
 }
