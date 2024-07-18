@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import axios from 'axios';
 
 const TestAxios = () => {
-  const [text, setData] = useState('');
+  const [text, setData] = useState('지우고 입력해라');
 
 
   const handleChange = (e) => {
