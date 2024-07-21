@@ -5,14 +5,13 @@ import MyPage from './pages/user/MyPage'; // 컴포넌트명은 대문자로 시
 import TestAxios from './pages/TestAxios';
 import Login from './pages/main/Login';
 import Main from './pages/main/Main';
-import PrivateRoute from './pages/main/PriavteRoute';
 
 function App() {
   return (
     <div>
       <Routes>
         <Route path="/" element={<Login />} />
-        <Route path="/home" element={<PrivateRoute><Main /></PrivateRoute>} />
+        <Route path="/home" element={<Main />} />
         <Route path="/test" element={<TestAxios />} />
       </Routes>
     </div>

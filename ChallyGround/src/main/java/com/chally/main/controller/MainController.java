@@ -16,6 +16,7 @@ public class MainController {
     @GetMapping("/home")
     @ResponseBody
     public String home(Authentication authentication) {
+    	
         Object principal = authentication.getPrincipal();
         if (principal instanceof OAuth2User) {
             OAuth2User oauth2User = (OAuth2User) principal;
@@ -29,4 +30,6 @@ public class MainController {
             return "Welcome, authenticated user!";
         }
     }
+    
+    
 }

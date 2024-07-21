@@ -27,7 +27,7 @@
                                               
 	<!-- Table Configuration -->
 <!--     <table tableName="spring_session"/> -->
-		<table tableName="test_chally"/>
+		<table tableName="user_info"/>
 	</context>
 	
 	                         
