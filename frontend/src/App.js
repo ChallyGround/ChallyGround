@@ -1,7 +1,9 @@
-import logo from './logo.svg';
-import './App.css';
-import { Routes, Route } from 'react-router-dom';
-import MyPage from './pages/user/MyPage'; // 컴포넌트명은 대문자로 시작하는 것이 좋습니다.
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+
+import './css/App.css';
+
+import Header from './components/Header';
+import Sidebar from './components/SideBar';
 import TestAxios from './pages/TestAxios';
 import Login from './pages/main/Login';
 import Main from './pages/main/Main';
@@ -9,11 +11,13 @@ import Main from './pages/main/Main';
 function App() {
   return (
     <div>
-      <Routes>
-        <Route path="/" element={<Login />} />
-        <Route path="/home" element={<Main />} />
-        <Route path="/test" element={<TestAxios />} />
-      </Routes>
+      <Header />
+      <Sidebar />
+        <Routes>
+          <Route path="/" element={<Login />} />
+          <Route path="/home" element={<Main />} />
+          <Route path="/test" element={<TestAxios />} />
+        </Routes>
     </div>
   );
 }
