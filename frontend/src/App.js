@@ -14,8 +14,20 @@ function App() {
       <Header />
       <Sidebar />
         <Routes>
-          <Route path="/" element={<Login />} />
-          <Route path="/home" element={<Main />} />
+          <Route path="/" element={
+              <div style={{ display: 'flex' }}>
+              <Header />
+              <Sidebar />
+              <Login />
+              </div>
+          } />
+          <Route path="/home" element={
+            <div style={{ display: 'flex' }}>
+            <Header />
+            <Sidebar />
+            <Main />
+          </div>
+          } />
           <Route path="/test" element={<TestAxios />} />
         </Routes>
     </div>
