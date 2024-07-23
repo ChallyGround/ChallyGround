@@ -9,8 +9,8 @@ import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
 import Divider from '@mui/material/Divider';
 import Toolbar from '@mui/material/Toolbar';
+import { Home, ThreeDRotation } from '@material-ui/icons';
 
-const drawerWidth = 240;
 
 export default function SideBar() {
   return (
@@ -18,10 +18,11 @@ export default function SideBar() {
       <CssBaseline />
       <Drawer
         sx={{
-          width: drawerWidth,
+          width: 260,
+          height: 60,
           flexShrink: 0,
           '& .MuiDrawer-paper': {
-            width: drawerWidth,
+            width: 240,
             boxSizing: 'border-box',
           },
         }}
@@ -35,7 +36,8 @@ export default function SideBar() {
             <ListItem key={text} disablePadding>
               <ListItemButton>
                 <ListItemIcon>
-                  {/* 여기에 아이콘을 추가할 수 있습니다 */}
+                  <Home/>
+
                 </ListItemIcon>
                 <ListItemText primary={text} />
               </ListItemButton>
