@@ -11,6 +11,7 @@ import Divider from '@mui/material/Divider';
 import Toolbar from '@mui/material/Toolbar';
 import { Home, Description, CardGiftcard, RateReview, FitnessCenter, Settings, SubdirectoryArrowRight } from '@material-ui/icons';
 import { Link } from 'react-router-dom';
+import { getValue } from '@mui/system';
 
 export default function SideBar() {
   const [openItems, setOpenItems] = useState({});
@@ -37,7 +38,7 @@ export default function SideBar() {
       <Drawer
         sx={{
           width: 260,
-          height: 60,
+          height: 100,
           flexShrink: 0,
           '& .MuiDrawer-paper': {
             width: 240,

@@ -7,23 +7,26 @@ package com.chally.main.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
-import org.springframework.security.oauth2.core.user.OAuth2User;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.chally.config.JwtUtil;
 import com.chally.main.service.LoginService;
 
 @Controller
 public class LoginController {
 	@Autowired
 	LoginService loginService;
-	
-    @GetMapping("/api/login")
-    @ResponseBody
-    public String login(Authentication authentication) {
-    	String plain = loginService.getLogin(authentication);
-    	
-    	return plain;
-    }
+
+	@Autowired
+	private JwtUtil jwtUtil;
+
+	@GetMapping("/api/login")
+	@ResponseBody
+	public String login(Authentication authentication) {
+		String username = loginService.getLogin(authentication);
+		String token = jwtUtil.generateToken(username);
+		return "redirect:/login-success?token=" + token;
+	}
 }

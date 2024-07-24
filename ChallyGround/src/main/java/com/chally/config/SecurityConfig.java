@@ -11,6 +11,9 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityCustomizer;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
+
+import com.chally.filter.JwtAuthenticationFilter;
 
 @Configuration
 @EnableWebSecurity
@@ -27,8 +30,8 @@ public class SecurityConfig {
         .oauth2Login(oauth2Login ->
             oauth2Login.defaultSuccessUrl("/api/login") // , true // 
         )
-        .csrf(csrf -> csrf.disable());
-//        .addFilterBefore(jwtAuthenticationFilter(), UsernamePasswordAuthenticationFilter.class); // 추후 jwt 사용
+        .csrf(csrf -> csrf.disable())
+        .addFilterBefore(new JwtAuthenticationFilter(), UsernamePasswordAuthenticationFilter.class);
 
         return http.build();
     }
@@ -37,9 +40,4 @@ public class SecurityConfig {
     public WebSecurityCustomizer webSecurityCustomizer() {
         return (web) -> web.ignoring().requestMatchers("/resources/**");
     }
-
-/*	@Bean
-	public JwtAuthenticationFilter jwtAuthenticationFilter() {
-	    return new JwtAuthenticationFilter();
-	}*/
 }

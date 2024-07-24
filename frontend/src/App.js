@@ -7,6 +7,8 @@ import Sidebar from './components/SideBar';
 import TestAxios from './pages/TestAxios';
 import Login from './pages/main/Login';
 import Main from './pages/main/Main';
+import MyPage from './pages/user/MyPage';
+import LoginSuccess from './pages/main/LoginSuccess';
 
 function App() {
   return (
@@ -28,7 +30,21 @@ function App() {
             <Main />
           </div>
           } />
-          <Route path="/test" element={<TestAxios />} />
+          <Route path="/test" element={
+              <div style={{ display: 'flex' }}>
+              <Header />
+              <Sidebar />
+              <TestAxios />
+              </div>
+          } />
+          <Route path="/mypage" element={
+              <div style={{ display: 'flex' }}>
+              <Header />
+              <Sidebar />
+              <MyPage />
+              </div>
+          } />
+          <Route path="/login-success" element={<LoginSuccess />} />
         </Routes>
     </div>
   );

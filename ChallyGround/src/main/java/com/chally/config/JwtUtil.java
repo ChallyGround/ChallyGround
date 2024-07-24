@@ -8,34 +8,57 @@ import org.springframework.stereotype.Component;
 
 import java.security.Key;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.function.Function;
 
 @Component
 public class JwtUtil {
 
-    private final Key secretKey = Keys.secretKeyFor(SignatureAlgorithm.HS256); 
-    private final long expirationTime = 864_000_00; // 1 day
+    private final Key SECRET_KEY = Keys.secretKeyFor(SignatureAlgorithm.HS256); // HS256 키 생성
 
-    // 토큰 생성
+    // 토큰에서 사용자 이름 추출
+    public String extractUsername(String token) {
+        return extractClaim(token, Claims::getSubject);
+    }
+
+    // 토큰에서 만료 시간 추출
+    public Date extractExpiration(String token) {
+        return extractClaim(token, Claims::getExpiration);
+    }
+
+    public <T> T extractClaim(String token, Function<Claims, T> claimsResolver) {
+        final Claims claims = extractAllClaims(token);
+        return claimsResolver.apply(claims);
+    }
+
+    private Claims extractAllClaims(String token) {
+        return Jwts.parserBuilder().setSigningKey(SECRET_KEY).build().parseClaimsJws(token).getBody();
+    }
+
+    private Boolean isTokenExpired(String token) {
+        return extractExpiration(token).before(new Date());
+    }
+
+    // 사용자 이름을 기반으로 토큰 생성
     public String generateToken(String username) {
+        Map<String, Object> claims = new HashMap<>();
+        return createToken(claims, username);
+    }
+
+    private String createToken(Map<String, Object> claims, String subject) {
         return Jwts.builder()
-                .setSubject(username)
-                .setIssuedAt(new Date())
-                .setExpiration(new Date(System.currentTimeMillis() + expirationTime))
-                .signWith(secretKey) // `signWith` 메소드의 첫 번째 인자가 `Key` 객체
+                .setClaims(claims)
+                .setSubject(subject)
+                .setIssuedAt(new Date(System.currentTimeMillis()))
+                .setExpiration(new Date(System.currentTimeMillis() + 1000 * 60 * 60 * 10)) // 10시간 유효
+                .signWith(SECRET_KEY)
                 .compact();
     }
 
-    // 토큰에서 사용자 이름 추출
-//    public String extractUsername(String token) {
-//        return parseClaims(token).getSubject();
-//    }
-
-    // 토큰에서 Claims 추출
-//    private Claims parseClaims(String token) {
-//        return Jwts.builder() // `parser()` 대신 `parserBuilder()` 사용
-//                .setSigningKey(secretKey) // 서명 키 설정
-//                .build()
-//                .parseClaimsJws(token) // JWT에서 Claims 추출
-//                .getBody();
-//    }
+    // 토큰 검증
+    public Boolean validateToken(String token, String username) {
+        final String extractedUsername = extractUsername(token);
+        return (extractedUsername.equals(username) && !isTokenExpired(token));
+    }
 }
