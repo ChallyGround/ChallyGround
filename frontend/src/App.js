@@ -4,11 +4,11 @@ import './css/App.css';
 
 import Header from './components/Header';
 import Sidebar from './components/SideBar';
-import TestAxios from './pages/TestAxios';
 import Login from './pages/main/Login';
 import Main from './pages/main/Main';
 import MyPage from './pages/user/MyPage';
 import LoginSuccess from './pages/main/LoginSuccess';
+import SubmitData from './pages/SubmitData';
 
 function App() {
   return (
@@ -30,11 +30,11 @@ function App() {
             <Main />
           </div>
           } />
-          <Route path="/test" element={
+          <Route path="/submit" element={
               <div style={{ display: 'flex' }}>
               <Header />
               <Sidebar />
-              <TestAxios />
+              <SubmitData  />
               </div>
           } />
           <Route path="/mypage" element={

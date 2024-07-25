@@ -1,35 +1,28 @@
 package com.chally.main.controller;
 
-import org.springframework.security.core.Authentication;
-import org.springframework.security.oauth2.core.user.OAuth2User;
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import java.util.HashMap;
+import java.util.Map;
 
-@Controller
-public class MainController {
-    @GetMapping("/")
-    public String index() {
-        return "index";
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RestController;
+
+@RestController
+public class MainController {    
+    @PostMapping("/api/submit")
+    public ResponseEntity<Map<String, String>> submitData(@RequestBody Map<String, String> request) {
+        String name = request.get("name");
+        String email = request.get("email");
+
+        // 비즈니스 로직 처리 (예: 데이터베이스에 저장 등)
+
+        Map<String, String> response = new HashMap<>();
+        response.put("status", "success");
+        response.put("name", name);
+        response.put("email", email);
+
+        return ResponseEntity.ok(response);
     }
-
-    @GetMapping("/home")
-    @ResponseBody
-    public String home(Authentication authentication) {
-    	
-        Object principal = authentication.getPrincipal();
-        if (principal instanceof OAuth2User) {
-            OAuth2User oauth2User = (OAuth2User) principal;
-            // OAuth2User에서 사용자의 정보 얻기
-            String name = oauth2User.getAttribute("name");
-            String email = oauth2User.getAttribute("email");
-
-            return "Welcome, " + name + "! Your email is: " + email;
-        } else {
-            // 일반적인 경우
-            return "Welcome, authenticated user!";
-        }
-    }
-    
     
 }

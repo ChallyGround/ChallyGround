@@ -5,6 +5,9 @@
 ***/
 package com.chally.main.controller;
 
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
@@ -23,10 +26,15 @@ public class LoginController {
 	private JwtUtil jwtUtil;
 
 	@GetMapping("/api/login")
-	@ResponseBody
 	public String login(Authentication authentication) {
-		String username = loginService.getLogin(authentication);
-		String token = jwtUtil.generateToken(username);
-		return "redirect:/login-success?token=" + token;
+        String username = loginService.getLogin(authentication);
+        String token = jwtUtil.generateToken(username);
+        try {
+            String encodedToken = URLEncoder.encode(token, "UTF-8");
+            return "redirect:http://localhost:3000/login-success?token=" + encodedToken;
+        } catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
+            return "redirect:/";
+        }
 	}
 }

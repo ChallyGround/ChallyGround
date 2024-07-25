@@ -5,6 +5,7 @@
 ***/
 package com.chally.config;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -19,25 +20,21 @@ import com.chally.filter.JwtAuthenticationFilter;
 @EnableWebSecurity
 public class SecurityConfig {
 
-    @Bean
-    public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
-        http
-        .authorizeHttpRequests(authorizeRequests ->
-            authorizeRequests
-                .requestMatchers("/public/**").permitAll()
-                .anyRequest().authenticated()
-        )
-        .oauth2Login(oauth2Login ->
-            oauth2Login.defaultSuccessUrl("/api/login") // , true // 
-        )
-        .csrf(csrf -> csrf.disable())
-        .addFilterBefore(new JwtAuthenticationFilter(), UsernamePasswordAuthenticationFilter.class);
+	@Autowired
+	private JwtUtil jwtUtil;
 
-        return http.build();
-    }
-    
-    @Bean
-    public WebSecurityCustomizer webSecurityCustomizer() {
-        return (web) -> web.ignoring().requestMatchers("/resources/**");
-    }
+	@Bean
+	public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
+		http.authorizeHttpRequests(authorizeRequests -> authorizeRequests.requestMatchers("/public/**").permitAll()
+				.anyRequest().authenticated()).oauth2Login(oauth2Login -> oauth2Login.defaultSuccessUrl("/api/login") // , true // 
+		).csrf(csrf -> csrf.disable()).addFilterBefore(new JwtAuthenticationFilter(jwtUtil),
+				UsernamePasswordAuthenticationFilter.class);
+
+		return http.build();
+	}
+
+	@Bean
+	public WebSecurityCustomizer webSecurityCustomizer() {
+		return (web) -> web.ignoring().requestMatchers("/resources/**");
+	}
 }
