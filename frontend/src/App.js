@@ -9,6 +9,7 @@ import Main from './pages/main/Main';
 import MyPage from './pages/user/MyPage';
 import LoginSuccess from './pages/main/LoginSuccess';
 import SubmitData from './pages/SubmitData';
+import EditUserInfo from './pages/user/EditUserInfo';
 
 function App() {
   return (
@@ -41,6 +42,13 @@ function App() {
               <div style={{ display: 'flex' }}>
               <Header />
               <Sidebar />
+              <MyPage />
+              </div>
+          } />
+          <Route path="/EditUserInfo" element={
+              <div style={{ display: 'flex' }}>
+              <Header />
+              <EditUserInfo />
               <MyPage />
               </div>
           } />
