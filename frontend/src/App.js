@@ -13,39 +13,20 @@ import EditUserInfo from './pages/user/EditUserInfo';
 
 function App() {
   return (
-    <div>
-      <Header />
-      <Sidebar />
+    <div className="app-container">
+      <div className="app-content">
+        <Sidebar />
+        <div className="main-content">
         <Routes>
-          <Route path="/" element={
-              <div style={{ marginLeft: '245px' }}>
-              <Login />
-              </div>
-          } />
-          <Route path="/home" element={
-            <div style={{ marginLeft: '245px' }}>
-            <Main />
-          </div>
-          } />
-          <Route path="/submit" element={
-              <div style={{ marginLeft: '245px' }}>
-              <SubmitData  />
-              </div>
-          } />
-          <Route path="/mypage" element={
-              <div style={{  marginLeft: '245px' }}>
-              <MyPage />
-              </div>
-          } />
-          <Route path="/EditUserInfo" element={
-              <div style={{  marginLeft: '245px' }}>
-              <EditUserInfo />
-              </div>
-          } />
-          <Route path="/login-success" element={
-            <LoginSuccess />
-          } />
+        <Route path="/" element={<Login />} />
+            <Route path="/home" element={<Main />} />
+            <Route path="/submit" element={<SubmitData />} />
+            <Route path="/mypage" element={<MyPage />} />
+            <Route path="/EditUserInfo" element={<EditUserInfo />} />
+            <Route path="/login-success" element={<LoginSuccess />} />
         </Routes>
+        </div>
+      </div>
     </div>
   );
 }

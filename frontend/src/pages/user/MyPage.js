@@ -17,14 +17,17 @@ function MyPage() {
 
     return (
         <div id="main">
-            <div id="user_box">
-                <p id="user_name">user</p>
-                <div id="user_picture"></div>
-            </div>
-            <div className="form">
-                <Button type="button" variant="contained" onClick={editUserInfo}>수정하기</Button>
-            </div>
+
+       
             <div>
+                <div id="user_box">
+                    <p id="user_name">user</p>
+                    <div id="user_picture"></div>
+                    <div className="form">
+                    <Button type="button" variant="contained" onClick={editUserInfo}>수정하기</Button>
+                    </div>
+                </div>
+
                 <div id="ing">참여중인챌린지
                     <div id="ing-1"></div>
                     <div id="ing-2"></div>
