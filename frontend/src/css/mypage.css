@@ -87,12 +87,12 @@
     bottom: 220px;
 }
 
-#main {
+/* #main {
     background-color: white;
     margin: 500px 0 100px -400px;
     display: flex;
     align-items: center;
-}
+} */
 
 #user_box {
     width: 800px;
@@ -100,8 +100,8 @@
     display: flex;
     align-items: center;
     position: relative;
-    bottom: 600px;
-    left: 800px;
+    /* bottom: 600px;
+    left: 800px; */
     background-color: rgb(255, 255, 255);
 }
 #user_name {
@@ -132,8 +132,8 @@
     border-radius: 4px;
     display: flex;
     position: relative;
-    bottom: 550px;
-    left: 700px;
+    bottom: 135px;
+    left: 580px;
 }
 
 .container {

@@ -37,11 +37,11 @@ export default function SideBar() {
       <CssBaseline />
       <Drawer
         sx={{
-          width: 260,
-          height: 100,
+          width: 239,
+          height: 64,
           flexShrink: 0,
           '& .MuiDrawer-paper': {
-            width: 240,
+            width: 239,
             boxSizing: 'border-box',
           },
         }}

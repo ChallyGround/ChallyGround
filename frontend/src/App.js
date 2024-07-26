@@ -18,41 +18,33 @@ function App() {
       <Sidebar />
         <Routes>
           <Route path="/" element={
-              <div style={{ display: 'flex' }}>
-              <Header />
-              <Sidebar />
+              <div style={{ marginLeft: '245px' }}>
               <Login />
               </div>
           } />
           <Route path="/home" element={
-            <div style={{ display: 'flex' }}>
-            <Header />
-            <Sidebar />
+            <div style={{ marginLeft: '245px' }}>
             <Main />
           </div>
           } />
           <Route path="/submit" element={
-              <div style={{ display: 'flex' }}>
-              <Header />
-              <Sidebar />
+              <div style={{ marginLeft: '245px' }}>
               <SubmitData  />
               </div>
           } />
           <Route path="/mypage" element={
-              <div style={{ display: 'flex' }}>
-              <Header />
-              <Sidebar />
+              <div style={{  marginLeft: '245px' }}>
               <MyPage />
               </div>
           } />
           <Route path="/EditUserInfo" element={
-              <div style={{ display: 'flex' }}>
-              <Header />
+              <div style={{  marginLeft: '245px' }}>
               <EditUserInfo />
-              <MyPage />
               </div>
           } />
-          <Route path="/login-success" element={<LoginSuccess />} />
+          <Route path="/login-success" element={
+            <LoginSuccess />
+          } />
         </Routes>
     </div>
   );
