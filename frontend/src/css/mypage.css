@@ -91,6 +91,7 @@
     background-color: white;
     display: flex;
     align-items: center;
+    padding-top: 140px;
 }
 
 #user_box {
@@ -100,6 +101,7 @@
     align-items: center;
     position: relative;
     background-color: rgb(255, 255, 255);
+    padding-bottom: 150px;
 }
 #user_name {
     font-style: bold;
@@ -110,13 +112,13 @@
 }
 
 #user_picture {
-    width: 230px;
-    height: 230px;
+    width: 250px;
+    height: 250px;
     border-radius: 120px;
     background-color: pink;
     display: flex;
     position: relative;
-    right: 50px;
+    right: 130px;
     top: 20px;
 }
 
@@ -129,6 +131,8 @@
     border-radius: 4px;
     display: flex;
     position: relative;
+    margin-left: 260px;
+    margin-top: 50px;
 }
 
 .container {
