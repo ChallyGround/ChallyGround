@@ -1,4 +1,9 @@
-package com.chally.main.service;
+/***
+ *최초 작성자: 심건보
+ *최초 작성일: 2024.07.27
+ *목적: 로그인 서비스
+***/
+package com.chally.user.service;
 
 import org.springframework.stereotype.Service;
 
@@ -14,6 +19,11 @@ public class LoginService {
 	@Autowired
 	UserInfoMapper userInfoDao;
 
+	/***
+	 *메소드 용도: 회원가입&로그인
+	 *매개변수: Authentication
+	 *반환값: String(email)
+	***/
 	public String getLogin(Authentication authentication) {
         Object principal = authentication.getPrincipal();
         if (principal instanceof OAuth2User) {
@@ -30,18 +40,15 @@ public class LoginService {
             record.setOauthId(sub);
             
             //DAO 실행
-            int checked = 0;
             int isSignUp = userInfoDao.searchOneCount(record); // 회원가입 체크
             if(isSignUp < 1) {
-            	checked = userInfoDao.insertSelective(record);
-            	isSignUp = 1;
+            	isSignUp = userInfoDao.insertSelective(record); // 회원가입 진행
             }
             
-            return (isSignUp == 1) ? 
-            		"Welcome, " + name + "! Your email is: " + email :  
-            		"Welcome, authenticated user!" ;
+            return email;
+            
         } else {
-            return "Welcome, authenticated user!";
+            return null;
         }
 	}
 }

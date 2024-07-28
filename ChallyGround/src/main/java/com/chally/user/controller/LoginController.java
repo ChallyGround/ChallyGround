@@ -3,7 +3,7 @@
  *최초 작성일: 2024.07.21
  *목적: 로그인 컨트롤러
 ***/
-package com.chally.main.controller;
+package com.chally.user.controller;
 
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.chally.config.JwtUtil;
-import com.chally.main.service.LoginService;
+import com.chally.user.service.LoginService;
 
 @Controller
 public class LoginController {
@@ -27,8 +27,8 @@ public class LoginController {
 
 	@GetMapping("/api/login")
 	public String login(Authentication authentication) {
-        String username = loginService.getLogin(authentication);
-        String token = jwtUtil.generateToken(username);
+        String email = loginService.getLogin(authentication); //E-mail 반환
+        String token = jwtUtil.generateToken(email);
         try {
             String encodedToken = URLEncoder.encode(token, "UTF-8");
             return "redirect:http://localhost:3000/login-success?token=" + encodedToken;

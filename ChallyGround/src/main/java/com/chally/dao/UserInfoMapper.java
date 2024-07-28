@@ -96,4 +96,5 @@ public interface UserInfoMapper {
     
     // 커스텀 메서드
     int searchOneCount(UserInfo row);
+    UserInfo findByEmail(String email);
 }

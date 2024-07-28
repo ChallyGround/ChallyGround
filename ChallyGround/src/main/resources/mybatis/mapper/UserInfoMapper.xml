@@ -323,4 +323,8 @@
   		WHERE OAUTH_ID = #{oauthId}
   	</if>
   </select>
+  <select id="findByEmail" resultType="com.chally.vo.UserInfo" parameterType="java.lang.String">
+  	SELECT * FROM user_info 
+  	WHERE EMAIL = #{email}
+  </select>
 </mapper>

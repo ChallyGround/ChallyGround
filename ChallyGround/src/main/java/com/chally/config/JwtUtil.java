@@ -17,8 +17,7 @@ public class JwtUtil {
 
     private final Key SECRET_KEY = Keys.secretKeyFor(SignatureAlgorithm.HS256); // HS256 키 생성
 
-    // 토큰에서 사용자 이름 추출
-    public String extractUsername(String token) {
+    public String extractKey(String token) {
         return extractClaim(token, Claims::getSubject);
     }
 
@@ -40,10 +39,9 @@ public class JwtUtil {
         return extractExpiration(token).before(new Date());
     }
 
-    // 사용자 이름을 기반으로 토큰 생성
-    public String generateToken(String username) {
+    public String generateToken(String key) {
         Map<String, Object> claims = new HashMap<>();
-        return createToken(claims, username);
+        return createToken(claims, key);
     }
 
     private String createToken(Map<String, Object> claims, String subject) {
@@ -57,8 +55,8 @@ public class JwtUtil {
     }
 
     // 토큰 검증
-    public Boolean validateToken(String token, String username) {
-        final String extractedUsername = extractUsername(token);
-        return (extractedUsername.equals(username) && !isTokenExpired(token));
+    public Boolean validateToken(String token, String key) {
+        final String extractedUsername = extractKey(token);
+        return (extractedUsername.equals(key) && !isTokenExpired(token));
     }
 }

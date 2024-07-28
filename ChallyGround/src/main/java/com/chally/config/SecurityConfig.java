@@ -11,6 +11,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityCustomizer;
+import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
@@ -22,13 +23,23 @@ public class SecurityConfig {
 
 	@Autowired
 	private JwtUtil jwtUtil;
+	
+    @Autowired
+    private JwtAuthenticationFilter jwtAuthenticationFilter;
+
+    @Autowired
+    private UserDetailsService userDetailsService;
 
 	@Bean
 	public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
-		http.authorizeHttpRequests(authorizeRequests -> authorizeRequests.requestMatchers("/public/**").permitAll()
-				.anyRequest().authenticated()).oauth2Login(oauth2Login -> oauth2Login.defaultSuccessUrl("/api/login") // , true // 
-		).csrf(csrf -> csrf.disable()).addFilterBefore(new JwtAuthenticationFilter(jwtUtil),
-				UsernamePasswordAuthenticationFilter.class);
+		http.authorizeHttpRequests(authorizeRequests -> authorizeRequests
+				.requestMatchers("/public/**")
+				.permitAll()
+				.anyRequest().authenticated())
+				.oauth2Login(oauth2Login -> oauth2Login.defaultSuccessUrl("/api/login"))
+				.csrf(csrf -> csrf.disable())
+				.addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class)
+				.userDetailsService(userDetailsService);
 
 		return http.build();
 	}
