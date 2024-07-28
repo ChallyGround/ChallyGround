@@ -10,22 +10,28 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.chally.user.CustomUserDetails;
+import com.chally.vo.UserInfo;
+
 @RestController
-public class MainController {    
-    @PostMapping("/api/submit")
-    public ResponseEntity<Map<String, String>> submitData(@RequestBody Map<String, String> request) {
-        Authentication authentication = SecurityContextHolder.getContext().getAuthentication(); // 로그인된 유저 정보 확인 가능
-        String name = request.get("name");
-        String email = request.get("email");
+public class MainController {
+	@PostMapping("/api/submit")
+	public ResponseEntity<Map<String, String>> submitData(@RequestBody Map<String, String> request) {
 
-        // 비즈니스 로직 처리 (예: 데이터베이스에 저장 등)
-        
+		//회원정보 가져오기
+		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+		CustomUserDetails userDetails = (CustomUserDetails) authentication.getPrincipal();
 
-        Map<String, String> response = new HashMap<>();
-        response.put("status", "success");
-        response.put("name", name);
-        response.put("email", email);
+		String name = request.get("name");
+		String email = request.get("email");
 
-        return ResponseEntity.ok(response);
-    }
+		// 비즈니스 로직 처리 (예: 데이터베이스에 저장 등)
+
+		Map<String, String> response = new HashMap<>();
+		response.put("status", "success");
+		response.put("name", name);
+		response.put("email", email);
+
+		return ResponseEntity.ok(response);
+	}
 }

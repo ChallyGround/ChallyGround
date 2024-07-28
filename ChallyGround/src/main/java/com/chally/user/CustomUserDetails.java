@@ -7,18 +7,25 @@ import java.util.Collection;
 
 public class CustomUserDetails implements UserDetails {
 
-    private String username;
+    private String email; //이메일
     private String password;
     private Collection<? extends GrantedAuthority> authorities;
-    private String name;  // 추가된 필드
+    private String name;  // 닉네임
+    private String tel; // 전화번호
+    //private Date birth; //데이터타입 확인 필요
+    private String oauthId; // 구글(sub)
+    private int id; // PK값
 
     // Constructor
-    public CustomUserDetails(String username, String password, Collection<? extends GrantedAuthority> authorities,
-                             String name) {
-        this.username = username;
+    public CustomUserDetails(String email, String password, Collection<? extends GrantedAuthority> authorities,
+                             String name,String tel ,String oauthId, int id) {
+        this.email = email; // 이메일
         this.password = password;
         this.authorities = authorities;
         this.name = name;
+        this.tel = tel;
+        this.oauthId = oauthId;
+        this.id = id;
     }
 
     @Override
@@ -33,11 +40,12 @@ public class CustomUserDetails implements UserDetails {
 
     @Override
     public String getUsername() {
-        return username;
+        return email;
     }
 
     @Override
     public boolean isAccountNonExpired() {
+    	//토큰 확인 해야할듯
         return true;
     }
 
@@ -59,5 +67,17 @@ public class CustomUserDetails implements UserDetails {
     // Getter for additional fields
     public String getName() {
         return name;
+    }
+    
+    public String getOauthId() {
+    	return oauthId;
+    }
+    
+    public int getId() {
+    	return id;
+    }
+    
+    public String getTel() {
+    	return tel;
     }
 }
