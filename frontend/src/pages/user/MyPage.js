@@ -16,30 +16,30 @@ function MyPage() {
     };
 
     return (
-        <div id="main">
+        <div className="main">
 
        
             <div>
-                <div id="user_box">
-                    <p id="user_name">user</p>
-                    <div id="user_picture"></div>
+                <div className="user_box">
+                    <p className="user_name">user</p>
+                    <div className="user_picture"></div>
                     <div className="form">
                     <Button type="button" variant="contained" onClick={editUserInfo}>수정하기</Button>
                     </div>
                 </div>
 
-                <div id="ing">참여중인챌린지
-                    <div id="ing-1"></div>
-                    <div id="ing-2"></div>
+                <div className="ing">참여중인챌린지
+                    <div className="ing-1"></div>
+                    <div className="ing-2"></div>
                 </div>
-                <div id="finish">참여완료 챌린지
-                    <div id="finish-1"></div>
-                    <div id="finish-2"></div>
-                    <div id="finish-3"></div>
+                <div className="finish">참여완료 챌린지
+                    <div className="finish-1"></div>
+                    <div className="finish-2"></div>
+                    <div className="finish-3"></div>
                 </div>
-                <div id="soon">참여예정 챌린지
-                    <div id="soon-1"></div>
-                    <div id="soon-2"></div>
+                <div className="soon">참여예정 챌린지
+                    <div className="soon-1"></div>
+                    <div className="soon-2"></div>
                 </div>
             </div>
             {isEditing && <EditUserInfo closeEditUserInfo={closeEditUserInfo} />}
