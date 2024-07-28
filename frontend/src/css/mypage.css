@@ -1,19 +1,19 @@
 /* mypage.css */
-#ing {
+.ing {
     width: 800px; 
     height: 270px;
     background-color: rgb(255, 255, 255);
     font-size: 6mm;
     font-weight: bold;
 }
-#ing-1 {
+.ing-1 {
     width: 330px;
     height: 180px;
     background-color: rgb(195, 195, 195);
     margin: 25px 0 0 40px;
 }
 
-#ing-2 {
+.ing-2 {
     width: 330px;
     height: 180px;
     background-color: rgb(195, 195, 195);
@@ -23,7 +23,7 @@
     bottom: 230px;
 }
 
-#finish {
+.finish {
     width: 800px; 
     height: 300px;
     background-color: rgb(255, 255, 255);
@@ -31,7 +31,7 @@
     font-weight: bold;
 }
 
-#finish-1 {
+.finish-1 {
     width: 200px;
     height: 190px;
     background-color: rgb(195, 195, 195);
@@ -40,7 +40,7 @@
     top: 10px;
 }
 
-#finish-2 {
+.finish-2 {
     width: 200px;
     height: 190px;
     background-color: rgb(195, 195, 195);
@@ -50,7 +50,7 @@
     left: 45px;
 }
 
-#finish-3 {
+.finish-3 {
     width: 200px;
     height: 190px;
     background-color: rgb(195, 195, 195);
@@ -60,7 +60,7 @@
     bottom: 470px;
 }
 
-#soon {
+.soon {
     width: 800px; 
     height: 270px;
     background-color: rgb(255, 255, 255);
@@ -68,7 +68,7 @@
     font-weight: bold;
 }
 
-#soon-1 {
+.soon-1 {
     width: 330px;
     height: 180px;
     background-color: rgb(195, 195, 195);
@@ -77,7 +77,7 @@
     top: 10px;
 }
 
-#soon-2 {
+.soon-2 {
     width: 330px;
     height: 180px;
     background-color: rgb(195, 195, 195);
@@ -87,14 +87,14 @@
     bottom: 220px;
 }
 
-#main {
+.main {
     background-color: white;
     display: flex;
     align-items: center;
     padding-top: 140px;
 }
 
-#user_box {
+.user_box {
     width: 800px;
     height: 250px;
     display: flex;
@@ -103,7 +103,7 @@
     background-color: rgb(255, 255, 255);
     padding-bottom: 150px;
 }
-#user_name {
+.user_name {
     font-style: bold;
     font-size: 18mm;
     display: flex;
@@ -111,7 +111,7 @@
     left: 350px;
 }
 
-#user_picture {
+.user_picture {
     width: 250px;
     height: 250px;
     border-radius: 120px;
@@ -161,3 +161,4 @@
     cursor: pointer;
     border-radius: 4px;
 }
+  
