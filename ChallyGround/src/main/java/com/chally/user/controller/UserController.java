@@ -44,7 +44,7 @@ public class UserController {
 	 *메소드 용도: 내정보 보기 컨트롤러
 	 *반환값: ResponseEntity(Map<String, Object>)
 	***/
-	@PostMapping("/api/modifyMyInfo")
+	@PostMapping("/api/viewMyInfo")
     public ResponseEntity<Map<String, Object>> viewMyInfo() {
         Map<String, Object> response = new HashMap<>();
         
