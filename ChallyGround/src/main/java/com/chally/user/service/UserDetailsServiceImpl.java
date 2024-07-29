@@ -1,3 +1,8 @@
+/***
+ *최초 작성자: 심건보
+ *최초 작성일: 2024.07.27
+ *목적: JWT 발급시 사용자 정보 전달
+***/
 package com.chally.user.service;
 
 import java.util.ArrayList;
@@ -20,10 +25,7 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 	
     @Override
     public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
-        // 데이터베이스에서 사용자 정보를 로드
-        // 예시로 이메일로 사용자 정보를 조회하고, UserDetails를 반환합니다.
-        // 실제로는 UserRepository 등을 사용하여 사용자 정보를 로드합니다.
-        UserInfo user = userDao.findByEmail(email);  // 사용자 조회 로직
+        UserInfo user = userDao.findByEmail(email);  // 사용자 조회 쿼리
         if (user == null) {
             throw new UsernameNotFoundException("User not found");
         }

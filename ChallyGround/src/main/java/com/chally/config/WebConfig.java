@@ -1,3 +1,8 @@
+/***
+ *최초 작성자: 심건보
+ *최초 작성일: 2024.07.27
+ *목적: CORS문제 해결
+***/
 package com.chally.config;
 
 import org.springframework.context.annotation.Bean;
@@ -10,7 +15,10 @@ public class WebConfig implements WebMvcConfigurer {
 
 	@Override
 	public void addCorsMappings(CorsRegistry registry) {
-		registry.addMapping("/api/**").allowedOrigins("http://localhost:3000")
-				.allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS").allowedHeaders("*").allowCredentials(true);
+		registry.addMapping("/api/**")
+				.allowedOrigins("http://localhost:3000")
+				.allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS")
+				.allowedHeaders("*")
+				.allowCredentials(true);
 	}
 }

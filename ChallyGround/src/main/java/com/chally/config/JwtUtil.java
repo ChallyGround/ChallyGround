@@ -1,3 +1,8 @@
+/***
+ *최초 작성자: 심건보
+ *최초 작성일: 2024.07.21
+ *목적: JWT 세팅
+***/
 package com.chally.config;
 
 import io.jsonwebtoken.Claims;

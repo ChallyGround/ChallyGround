@@ -1,3 +1,8 @@
+/***
+ *최초 작성자: 심건보
+ *최초 작성일: 2024.07.21
+ *목적: 메인 컨트롤러
+***/
 package com.chally.main.controller;
 
 import java.util.HashMap;

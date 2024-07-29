@@ -1,5 +1,8 @@
-// JwtAuthenticationFilter.java
-
+/***
+ *최초 작성자: 심건보
+ *최초 작성일: 2024.07.21
+ *목적: 스프링세큐리티 로그인 필터
+***/
 package com.chally.filter;
 
 import java.io.IOException;
