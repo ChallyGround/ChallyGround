@@ -10,6 +10,7 @@ import MyPage from './pages/user/MyPage';
 import LoginSuccess from './pages/main/LoginSuccess';
 import SubmitData from './pages/SubmitData';
 import EditUserInfo from './pages/user/EditUserInfo';
+import ChallengeForm from './pages/ChallengeForm';
 
 function App() {
   return (
@@ -24,6 +25,7 @@ function App() {
             <Route path="/mypage" element={<MyPage />} />
             <Route path="/EditUserInfo" element={<EditUserInfo />} />
             <Route path="/login-success" element={<LoginSuccess />} />
+            <Route path="/ChallengeForm" element={<ChallengeForm />} />
         </Routes>
         </div>
       </div>

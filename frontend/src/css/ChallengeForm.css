@@ -1,0 +1,91 @@
+/* 전체 폼 컨테이너 스타일 */
+.challenge-form {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+}
+
+/* 제목 스타일 */
+.challenge-form h2 {
+    margin-bottom: 20px;
+    font-size: 24px;
+    text-align: center;
+}
+
+/* 폼 그룹 스타일 */
+.form-group {
+    margin-bottom: 15px;
+}
+
+/* 레이블 스타일 */
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+/* 입력 필드 스타일 */
+.form-group input[type="text"],
+.form-group textarea,
+.form-group input[type="date"] {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+/* 텍스트영역 스타일 */
+.form-group textarea {
+    resize: vertical;
+}
+
+/* 참여 인원 입력 스타일 */
+.participants-input {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.participants-input button {
+    padding: 5px 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background-color: #fff;
+    cursor: pointer;
+}
+
+.participants-input span {
+    margin: 0 10px;
+    font-size: 18px;
+}
+
+/* 날짜 입력 스타일 */
+.date-input {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+/* 버튼 그룹 스타일 */
+.form-actions {
+    text-align: center;
+}
+
+.form-actions button {
+    margin: 0 5px;
+    padding: 10px 20px;
+    font-size: 16px;
+    border: none;
+    border-radius: 4px;
+    background-color: #007bff;
+    color: #fff;
+    cursor: pointer;
+}
+
+.form-actions button:hover {
+    background-color: #0056b3;
+}
