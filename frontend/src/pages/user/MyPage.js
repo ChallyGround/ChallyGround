@@ -17,7 +17,7 @@ function MyPage() {
                     <p className="user_name">user</p>
                     <div className="user_picture"></div>
                     <div className="form">
-                    <Button type="button" variant="contained" onClick={editUserInfo}>수정하기</Button>
+                        <Button type="button" variant="contained" onClick={editUserInfo}>수정하기</Button>
                     </div>
                 </div>
 
