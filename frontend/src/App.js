@@ -22,7 +22,7 @@ function App() {
             <Route path="/home" element={<Main />} />
             <Route path="/submit" element={<SubmitData />} />
             <Route path="/mypage" element={<MyPage />} />
-            <Route path="/EditUserInfo" element={<EditUserInfo />} />
+            <Route path="/editUserInfo" element={<EditUserInfo />} />
             <Route path="/login-success" element={<LoginSuccess />} />
         </Routes>
         </div>

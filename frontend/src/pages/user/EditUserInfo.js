@@ -4,12 +4,30 @@ import Swal from 'sweetalert2';
 import api from '../../api/axiosApi';
 import Button from '@mui/material/Button';
 
-function EditUserInfo() {
-    const [name, setName] = useState('');
-    const [email, setEmail] = useState('');
-    const [tel, setTelephone] = useState('');
+import dayjs, { Dayjs } from 'dayjs';
+import { DemoContainer } from '@mui/x-date-pickers/internals/demo';
+import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
+import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
+import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 
-    const saveUserInfo = async function() {
+function EditUserInfo() {
+    const [name, setName] = useState(null);
+    const [email, setEmail] = useState(null);
+    const [tel, setTelephone] = useState(null);
+    const [birth, setBirth] = useState(null); 
+    
+    useEffect(() => {
+        api.post("/viewMyInfo")
+            .then(response => {
+                setName(response.data.name);
+                setEmail(response.data.email);
+                setTelephone(response.data.tel);
+                const birthDate = dayjs(response.data.birth);
+                setBirth(birthDate.isValid() ? birthDate : null);
+            })
+    }, []);
+
+    const handleSaveUserInfo = async function() {
         if(tel.split('-').length != 3) {
             Swal.fire({
                 title: '경고!',
@@ -19,18 +37,9 @@ function EditUserInfo() {
               });
               return;
         }
-        if(!email.includes('@')) {
-            Swal.fire({
-                title: '경고!',
-                text: '이메일을 적어주십시오.',
-                icon: 'warning',
-                confirmButtonText: '확인'
-              });
-              return;
-        }
-
-        const result = await api.post('/modifyMyInfo', { name, email, tel });
-        console.log("fasd", result);
+        const birthFormat = birth.format('YYYY-MM-DD');
+        const result = await api.post('/modifyMyInfo', { name, email, tel, birthFormat });
+        console.log("수정결과", result);
 
             
         Swal.fire({
@@ -40,22 +49,6 @@ function EditUserInfo() {
             confirmButtonText: '확인'
           });
     };
-
-    
-    useEffect(() => {
-        api.post("/viewMyInfo")
-            .then(response => {
-                setName(response.data.name);
-                setEmail(response.data.email);
-                setTelephone(response.data.tel);
-            })
-    }, []);
-
-    const handleSaveUserInfo = () => {
-        saveUserInfo();
-        console.log('저장:', { name, email, tel });
-
-      };
 
     return (
         <div className="container">
@@ -67,11 +60,25 @@ function EditUserInfo() {
                 </div>
                 <div className="form-group">
                     <label htmlFor="email">이메일</label>
-                    <input type="text" id="email" name="email" value={email} onChange={(e) => setEmail(e.target.value)} required />
+                    <input type="text" id="email" name="email" value={email} />
                 </div>
                 <div className="form-group">
                     <label htmlFor="telephone">전화번호</label>
                     <input type="email" id="tel" name="tel" value={tel} onChange={(e) => setTelephone(e.target.value)} required />
+                </div>
+                <div >
+                <LocalizationProvider dateAdapter={AdapterDayjs} dateFormats={{monthShort:'M'}}>
+                    <DemoContainer components={['DatePicker', 'DatePicker']}>
+                        <DatePicker
+                        format="YYYY-MM-DD"
+                        mask={"____-__-__"}
+                        label="생일"
+                        showDaysOutsideCurrentMonth
+                        value={birth}
+                        onChange={(newBirth) => setBirth(newBirth)}
+                        />
+                    </DemoContainer>
+                </LocalizationProvider>
                 </div>
                 <div className="form-group">
                     <Button type="button" variant="contained" onClick={handleSaveUserInfo}>저장</Button>
