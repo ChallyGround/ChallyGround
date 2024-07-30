@@ -1,24 +1,17 @@
 // MyPage.js
 import React, { useState } from 'react';
-import EditUserInfo from './EditUserInfo';
+import { useNavigate, useLocation } from 'react-router-dom';
 import '../../css/mypage.css';
 import Button from '@mui/material/Button';
 
 function MyPage() {
-    const [isEditing, setIsEditing] = useState(false);
-
+    const navigate = useNavigate();
     const editUserInfo = () => {
-        setIsEditing(true);
-    };
-
-    const closeEditUserInfo = () => {
-        setIsEditing(false);
+        navigate('/editUserInfo');
     };
 
     return (
         <div className="main">
-
-       
             <div> 
                 <div className="user_box">
                     <p className="user_name">user</p>
@@ -42,7 +35,6 @@ function MyPage() {
                     <div className="soon-2"></div>
                 </div>
             </div>
-            {isEditing && <EditUserInfo closeEditUserInfo={closeEditUserInfo} />}
         </div>
     );
 }
