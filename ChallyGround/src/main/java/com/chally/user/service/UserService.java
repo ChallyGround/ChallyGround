@@ -5,7 +5,10 @@
 ***/
 package com.chally.user.service;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -38,15 +41,22 @@ public class UserService {
 		//파라미터 받기
         String name = request.get("name");
         String tel = request.get("tel");
-        String birth = request.get("birth");
+        String birth = request.get("birthFormat"); //yyyy-mm-dd
+        
+        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+        Date birthFormat = null;
+		try {
+			birthFormat = formatter.parse(birth);
+		} catch (ParseException e) {
+			e.printStackTrace();
+		}
         
         //VO객체 생성
         UserInfo record = new UserInfo();
         record.setId(userDetails.getId());
         record.setName(name);
         record.setTel(tel);
-        //생일은 데이터 형식 어케 받나 확인하고 변환하는 작업 필요
-        //record.setBirth(birth);
+        record.setBirth(birthFormat);
         
         //DAO 실행
         int updateCheck = userDao.updateByPrimaryKeySelective(record);
@@ -55,7 +65,7 @@ public class UserService {
         HashMap<String, Object> map = new HashMap<>();
         if(updateCheck == 1) {
             // 업데이트된 사용자 정보로 새로운 UserDetails 생성
-            CustomUserDetails updatedUserDetails = new CustomUserDetails(userDetails.getUsername(), null, new ArrayList<>(), record.getName(), record.getTel(), userDetails.getOauthId(), userDetails.getId());
+            CustomUserDetails updatedUserDetails = new CustomUserDetails(userDetails.getUsername(), null, new ArrayList<>(), record.getName(), record.getTel(), userDetails.getOauthId(), userDetails.getId(), record.getBirth());
             // 새로운 Authentication 객체 생성
             Authentication newAuth = new UsernamePasswordAuthenticationToken(updatedUserDetails, null, updatedUserDetails.getAuthorities());
             // SecurityContext에 새로운 Authentication 객체 설정
@@ -83,6 +93,7 @@ public class UserService {
 		map.put("email", userDetails.getUsername());
 		map.put("name", userDetails.getName());
 		map.put("tel", userDetails.getTel());
+		map.put("birth", userDetails.getBirth());
 
 		return map;
 	}

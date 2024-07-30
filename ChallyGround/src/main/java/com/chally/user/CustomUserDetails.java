@@ -1,9 +1,10 @@
 package com.chally.user;
 
+import java.util.Collection;
+import java.util.Date;
+
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
-
-import java.util.Collection;
 
 public class CustomUserDetails implements UserDetails {
 
@@ -12,13 +13,13 @@ public class CustomUserDetails implements UserDetails {
     private Collection<? extends GrantedAuthority> authorities;
     private String name;  // 닉네임
     private String tel; // 전화번호
-    //private Date birth; //데이터타입 확인 필요
+    private Date birth; // 생일
     private String oauthId; // 구글(sub)
     private int id; // PK값
 
     // Constructor
     public CustomUserDetails(String email, String password, Collection<? extends GrantedAuthority> authorities,
-                             String name,String tel ,String oauthId, int id) {
+                             String name,String tel ,String oauthId, int id, Date birth) {
         this.email = email; // 이메일
         this.password = password;
         this.authorities = authorities;
@@ -26,6 +27,7 @@ public class CustomUserDetails implements UserDetails {
         this.tel = tel;
         this.oauthId = oauthId;
         this.id = id;
+        this.birth = birth;
     }
 
     @Override
@@ -78,5 +80,9 @@ public class CustomUserDetails implements UserDetails {
     
     public String getTel() {
     	return tel;
+    }
+    
+    public Date getBirth() {
+    	return birth;
     }
 }
