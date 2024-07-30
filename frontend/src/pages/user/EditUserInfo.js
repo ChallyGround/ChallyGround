@@ -4,17 +4,25 @@ import Swal from 'sweetalert2';
 import api from '../../api/axiosApi';
 import Button from '@mui/material/Button';
 
-function EditUserInfo({ closeEditUserInfo }) {
+function EditUserInfo() {
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
     const [tel, setTelephone] = useState('');
-    const [variable, setVariable] = useState([]);
 
     const saveUserInfo = async function() {
         if(tel.split('-').length != 3) {
             Swal.fire({
                 title: '경고!',
                 text: '전화번호 양식은 000-0000-0000입니다.',
+                icon: 'warning',
+                confirmButtonText: '확인'
+              });
+              return;
+        }
+        if(!email.includes('@')) {
+            Swal.fire({
+                title: '경고!',
+                text: '이메일을 적어주십시오.',
                 icon: 'warning',
                 confirmButtonText: '확인'
               });
