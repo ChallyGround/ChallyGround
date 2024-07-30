@@ -13,7 +13,7 @@ const LoginSuccess = () => {
 
     if (token) {
       localStorage.setItem('jwt', token);
-      navigate('/submit');
+      navigate('/mypage');
     } else {
       navigate('/');
     }
