@@ -19,7 +19,7 @@ function MyPage() {
         <div className="main">
 
        
-            <div>
+            <div> 
                 <div className="user_box">
                     <p className="user_name">user</p>
                     <div className="user_picture"></div>
