@@ -1,6 +1,7 @@
 // EditUserInfo.js
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Swal from 'sweetalert2';
+import api from '../../api/axiosApi';
 
 function EditUserInfo({ closeEditUserInfo }) {
     const [name, setName] = useState('');
@@ -12,6 +13,14 @@ function EditUserInfo({ closeEditUserInfo }) {
         alert(`Name: ${name}, Email: ${email}, Telephone: ${telephone}`);
         closeEditUserInfo();
     };
+
+    const [variable, setVariable] = useState([]);
+    useEffect(() => {
+        api.post("/viewMyInfo")
+            .then(response => {
+                setVariable([response.data.name, response.data.email, response.data.tel]);
+            })
+    }, []);
 
     const handleSaveUserInfo = () => {
         // 예제 저장 로직
@@ -31,15 +40,15 @@ function EditUserInfo({ closeEditUserInfo }) {
             <form id="updateForm">
                 <div className="form-group">
                     <label htmlFor="name">이름</label>
-                    <input type="text" id="name" name="name" value={name} onChange={(e) => setName(e.target.value)} required />
+                    <input type="text" id="name" name="name" value={variable[0]} onChange={(e) => setName(e.target.value)} required />
                 </div>
                 <div className="form-group">
                     <label htmlFor="email">이메일</label>
-                    <input type="email" id="email" name="email" value={email} onChange={(e) => setEmail(e.target.value)} required />
+                    <input type="email" id="email" name="email" value={variable[1]} onChange={(e) => setEmail(e.target.value)} required />
                 </div>
                 <div className="form-group">
                     <label htmlFor="telephone">전화번호</label>
-                    <input type="tel" id="telephone" name="telephone" value={telephone} onChange={(e) => setTelephone(e.target.value)} required />
+                    <input type="tel" id="telephone" name="telephone" value={variable[2]} onChange={(e) => setTelephone(e.target.value)} required />
                 </div>
                 <div className="form-group">
                     <button type="button" onClick={handleSaveUserInfo}>저장</button>
