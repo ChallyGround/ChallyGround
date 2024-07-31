@@ -19,7 +19,7 @@ function App() {
         <Sidebar />
         <div className="main-content">
         <Routes>
-        <Route path="/" element={<Login />} />
+            <Route path="/chlogin" element={<Login />} />
             <Route path="/home" element={<Main />} />
             <Route path="/submit" element={<SubmitData />} />
             <Route path="/mypage" element={<MyPage />} />

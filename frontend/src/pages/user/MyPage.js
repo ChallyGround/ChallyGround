@@ -3,11 +3,13 @@ import React, { useState } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import '../../css/mypage.css';
 import Button from '@mui/material/Button';
+import api from '../../api/axiosApi';
 
 function MyPage() {
     const navigate = useNavigate();
     const editUserInfo = () => {
         navigate('/editUserInfo');
+        //api.get('/editUserInfo');
     };
 
     return (

@@ -32,4 +32,3 @@ public class UserDetailsServiceImpl implements UserDetailsService {
         return new CustomUserDetails(user.getEmail(), null, new ArrayList<>(), user.getName(),user.getTel(), user.getOauthId(), user.getId(), user.getBirth());
     }
 }
-

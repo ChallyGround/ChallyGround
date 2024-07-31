@@ -21,7 +21,7 @@ api.interceptors.response.use((response) => {
 }, (error) => {
   if (error.response && error.response.status === 401) {
     // 401 Unauthorized 응답을 받으면 로그인 페이지로 리다이렉트
-    window.location.href = '/';
+    window.location.href = '/chlogin';
   }
   return Promise.reject(error);
 });

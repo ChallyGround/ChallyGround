@@ -16,6 +16,7 @@ import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
 import com.chally.filter.JwtAuthenticationFilter;
+import com.chally.user.service.UserDetailsServiceImpl;
 
 @Configuration
 @EnableWebSecurity
@@ -28,13 +29,12 @@ public class SecurityConfig {
     private JwtAuthenticationFilter jwtAuthenticationFilter;
 
     @Autowired
-    private UserDetailsService userDetailsService;
+    private UserDetailsServiceImpl userDetailsService;
 
 	@Bean
 	public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
 		http.authorizeHttpRequests(authorizeRequests -> authorizeRequests
-				.requestMatchers("/public/**")
-				.permitAll()
+				.requestMatchers("/public/**").permitAll()
 				.anyRequest().authenticated())
 				.oauth2Login(oauth2Login -> oauth2Login.defaultSuccessUrl("/api/login"))
 				.csrf(csrf -> csrf.disable())

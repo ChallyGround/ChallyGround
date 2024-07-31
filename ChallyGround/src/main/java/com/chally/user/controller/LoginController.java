@@ -31,7 +31,7 @@ public class LoginController {
         String token = jwtUtil.generateToken(email);
         try {
             String encodedToken = URLEncoder.encode(token, "UTF-8");
-            return "redirect:http://localhost:3000/login-success?token=" + encodedToken;
+            return "redirect:http://localhost:8080/login-success?token=" + encodedToken;
         } catch (UnsupportedEncodingException e) {
             e.printStackTrace();
             return "redirect:/";
