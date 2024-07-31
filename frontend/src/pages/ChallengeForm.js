@@ -1,4 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
+import { Editor } from '@toast-ui/react-editor';
+import '@toast-ui/editor/dist/toastui-editor.css';
+import '@toast-ui/editor/dist/toastui-editor-viewer.css';
 import './ChallengeForm.css';
 
 const ChallengeForm = () => {
@@ -7,6 +10,7 @@ const ChallengeForm = () => {
     const [participants, setParticipants] = useState(2);
     const [startDate, setStartDate] = useState('');
     const [endDate, setEndDate] = useState('');
+    const editorRef = useRef(); // editorRef 선언
 
     const handleDecrease = () => {
         if (participants > 1) {
@@ -38,6 +42,10 @@ const ChallengeForm = () => {
         }
     };
 
+    const handleEditorChange = () => {
+        setContent(editorRef.current.getInstance().getMarkdown());
+    };
+
     return (
         <div className="challenge-form">
             <h2>챌린지 등록</h2>
@@ -53,13 +61,15 @@ const ChallengeForm = () => {
             </div>
             <div className="form-group">
                 <label htmlFor="content">챌린지 내용</label>
-                <textarea 
-                    id="content" 
-                    rows="4" 
-                    placeholder="이 챌린지의 목표와 참가 조건을 구체적으로 작성해 주세요." 
-                    value={content} 
-                    onChange={(e) => setContent(e.target.value)} 
-                ></textarea>
+                <Editor
+                    initialValue={content}
+                    previewStyle="vertical"
+                    height="300px"
+                    initialEditType="wysiwyg"
+                    useCommandShortcut={true}
+                    ref={editorRef} // editorRef를 Editor에 전달
+                    onChange={handleEditorChange} // 에디터 내용 변경 시 호출되는 함수
+                />
             </div>
             <div className="form-group">
                 <label>참여 인원</label>
@@ -74,7 +84,7 @@ const ChallengeForm = () => {
                 <div className="date-input">
                     <input 
                         type="date" 
-                        value={startDate}  // 'startDate'로 수정
+                        value={startDate} 
                         onChange={(e) => setStartDate(e.target.value)} 
                     />
                     <input 
