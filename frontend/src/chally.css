@@ -1,0 +1,106 @@
+.app {
+    font-family: 'Arial, sans-serif';
+      padding: 20px;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background-color: #f7f7f7;
+      padding: 10px;
+      border-radius: 8px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+    
+    .profile {
+      text-align: center;
+    margin-top: 20px;
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+    
+    .user-info {
+      margin-top: 10px;
+    }
+    .line {
+      margin-top: 4%;
+      display: flex;
+      justify-content: space-between;
+    }
+    
+    
+    .achievement-circle {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      border: 5px solid #206723e3;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin: 0 auto;
+    }
+    
+    .challenges {
+      margin-top: 20px;
+    }
+    
+    .challenge {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background-color: #f9f9f9;
+      padding: 10px;
+      margin-top: 10px;
+      border-radius: 5px;
+    }
+    
+    .challenge img {
+      width: 40px;
+      height: 40px;
+    }
+    
+    .popup {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background-color: white;
+      padding: 20px;
+      border: 2px solid #216023e0;
+      border-radius: 10px;
+      text-align: center;
+    }
+    
+    .edit-name {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-top: 10px;
+    }
+    
+    .edit-name input {
+      padding: 5px;
+      font-size: 16px;
+      margin-bottom: 10px;
+    }
+    
+    .edit-name button {
+      right: 30%;
+      padding: 10px 10px;
+      font-size: 16px;
+    }
+    
+    .span{
+      color: chartreuse;}
+    
+    .level{
+      color: darkorange;
+      font-size: larger; 
+    }
+    
+    
