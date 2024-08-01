@@ -42,7 +42,7 @@ function updateDisplay() {
     }
     setLastQuestTime(now);
 
-    const quests = ['물마시기', '스트레칭하기'] ;
+    const quests = ['물마시기 퀘스트를 완료하세요.', '스트레칭하기 퀘스트를 완료하세요.'] ;
     const randomQuest = quests[Math.floor(Math.random() * quests.length)];
     setCurrentQuest(randomQuest);
     setQuestPopup(true);
@@ -127,7 +127,7 @@ function updateDisplay() {
 
       {attendancePopup && (
         <div className="popup">
-          <p>출석이 완료되었습니다.
+          <p>출석을 완료하여 2점을 얻었습니다!
           
           </p>
           <button onClick={handleAttendanceComplete}>완료</button>
