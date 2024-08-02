@@ -14,7 +14,7 @@ const LoginSuccess = () => {
 
     if (token) {
       localStorage.setItem('jwt', token);
-      navigate('/mypage');
+      navigate('/chally/mypage');
     } else {
       navigate('/');
     }

@@ -3,7 +3,7 @@
 import axios from 'axios';
 
 const api = axios.create({
-  baseURL: 'http://localhost:8080/api', // 서버 주소
+  baseURL: 'http://localhost:8080/chally/api', // 서버 주소
 });
 
 api.interceptors.request.use((config) => {

@@ -34,9 +34,9 @@ public class SecurityConfig {
 	@Bean
 	public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
 		http.authorizeHttpRequests(authorizeRequests -> authorizeRequests
-				.requestMatchers("/public/**").permitAll()
+				.requestMatchers("/public/**", "/static/**", "/webjars/**").permitAll()
 				.anyRequest().authenticated())
-				.oauth2Login(oauth2Login -> oauth2Login.defaultSuccessUrl("/api/login"))
+				.oauth2Login(oauth2Login -> oauth2Login.defaultSuccessUrl("/axios/login"))
 				.csrf(csrf -> csrf.disable())
 				.addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class)
 				.userDetailsService(userDetailsService);

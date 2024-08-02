@@ -48,7 +48,9 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
 
         String requestURI = request.getRequestURI();
         // 인증이 필요 없는 URL 패턴을 설정
-        if (requestURI.startsWith("/login-success") || requestURI.startsWith("/static") || requestURI.startsWith("/api/login") || requestURI.startsWith("/chlogin")) {
+        if (!requestURI.contains("/api")) {
+        	// requestURI.startsWith("/login-success") || requestURI.startsWith("/static") 
+        	//|| requestURI.startsWith("/api/login") || requestURI.startsWith("/chlogin")
             chain.doFilter(request, response);  // 필터를 적용하지 않고 체인 계속 진행
             return;
         }

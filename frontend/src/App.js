@@ -19,13 +19,13 @@ function App() {
         <Sidebar />
         <div className="main-content">
         <Routes>
-            <Route path="/chlogin" element={<Login />} />
-            <Route path="/home" element={<Main />} />
-            <Route path="/submit" element={<SubmitData />} />
-            <Route path="/mypage" element={<MyPage />} />
-            <Route path="/editUserInfo" element={<EditUserInfo />} />
-            <Route path="/login-success" element={<LoginSuccess />} />
-            <Route path="/ChallengeForm" element={<ChallengeForm />} />
+            <Route path="/chally/chlogin" element={<Login />} />
+            <Route path="/chally/home" element={<Main />} />
+            <Route path="/chally/submit" element={<SubmitData />} />
+            <Route path="/chally/mypage" element={<MyPage />} />
+            <Route path="/chally/editUserInfo" element={<EditUserInfo />} />
+            <Route path="/chally/login-success" element={<LoginSuccess />} />
+            <Route path="/chally/ChallengeForm" element={<ChallengeForm />} />
         </Routes>
         </div>
       </div>
