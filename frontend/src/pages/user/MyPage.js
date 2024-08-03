@@ -16,7 +16,7 @@ function MyPage() {
         <div className="main">
             <div> 
                 <div className="user_box">
-                    <p className="user_name">user</p>
+                    <p className="user_name">chally</p>
                     <div className="user_picture"></div>
                     <div className="form">
                         <Button type="button" variant="contained" onClick={editUserInfo}>수정하기</Button>
