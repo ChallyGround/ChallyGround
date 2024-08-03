@@ -8,7 +8,7 @@ import api from '../../api/axiosApi';
 function MyPage() {
     const navigate = useNavigate();
     const editUserInfo = () => {
-        navigate('/editUserInfo');
+        navigate('/chally/editUserInfo');
         //api.get('/editUserInfo');
     };
 

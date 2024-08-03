@@ -9,6 +9,7 @@ import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -19,19 +20,22 @@ import com.chally.user.service.LoginService;
 
 @Controller
 public class LoginController {
+    @Value("${service.ip}")
+    private String allowedOrigins;
+    
 	@Autowired
 	LoginService loginService;
 
 	@Autowired
 	private JwtUtil jwtUtil;
 
-	@GetMapping("/api/login")
+	@GetMapping("/axios/login")
 	public String login(Authentication authentication) {
         String email = loginService.getLogin(authentication); //E-mail 반환
         String token = jwtUtil.generateToken(email);
         try {
             String encodedToken = URLEncoder.encode(token, "UTF-8");
-            return "redirect:http://localhost:8080/login-success?token=" + encodedToken;
+            return "redirect:"+allowedOrigins+"/chally/login-success?token=" + encodedToken;
         } catch (UnsupportedEncodingException e) {
             e.printStackTrace();
             return "redirect:/";
