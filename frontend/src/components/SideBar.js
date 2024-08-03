@@ -41,7 +41,7 @@ export default function SideBar() {
           height: 64,
           flexShrink: 0,
           '& .MuiDrawer-paper': {
-            width: 239,
+            width: 450,
             boxSizing: 'border-box',
           },
         }}

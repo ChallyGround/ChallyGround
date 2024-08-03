@@ -1,11 +1,12 @@
 /* 전체 폼 컨테이너 스타일 */
 .challenge-form {
-    max-width: 600px;
+    max-width: 1000px;
     margin: 0 auto;
     padding: 20px;
     border: 1px solid #ddd;
     border-radius: 8px;
     background-color: #f9f9f9;
+    margin: 100px;
 }
 
 /* 제목 스타일 */
@@ -87,5 +88,5 @@
 }
 
 .form-actions button:hover {
-    background-color: #0056b3;
+    background-color: #20262c;
 }

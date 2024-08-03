@@ -11,6 +11,8 @@ import LoginSuccess from './pages/main/LoginSuccess';
 import SubmitData from './pages/SubmitData';
 import EditUserInfo from './pages/user/EditUserInfo';
 import ChallengeForm from './pages/ChallengeForm';
+import Main_page from './pages/main_page';
+import Chally from './pages/chally';
 
 function App() {
   return (
@@ -26,6 +28,8 @@ function App() {
             <Route path="/editUserInfo" element={<EditUserInfo />} />
             <Route path="/login-success" element={<LoginSuccess />} />
             <Route path="/ChallengeForm" element={<ChallengeForm />} />
+            <Route path="/mainPage" element={<Main_page/>} />
+            <Route path="/chally" element={<Chally/>} />
         </Routes>
         </div>
       </div>

@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import './App.css';
+import './chally.css';
 
 
 
-function App() {
+function Chally() {
 const [points, setPoints] = useState(0);
   const [achievementRate, setAchievementRate] = useState(0);
   const [attendancePopup, setAttendancePopup] = useState(false);
@@ -69,7 +69,7 @@ function updateDisplay() {
   let [얻을포인트, c] = useState (['+80','+250','+50'])
 
   return (
-    <div className="app">
+    <div className="chally">
       <div className="profile">
         <div className="header">
         <h1>{userName}</h1>
@@ -144,4 +144,4 @@ function updateDisplay() {
   );
 }
 
-export default App;
+export default Chally;
