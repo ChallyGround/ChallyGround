@@ -16,7 +16,7 @@ const LoginSuccess = () => {
       localStorage.setItem('jwt', token);
       navigate('/chally/mypage');
     } else {
-      navigate('/');
+      navigate('/chlogin');
     }
   }, [location, navigate]);
 

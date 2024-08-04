@@ -12,8 +12,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.chally.config.JwtUtil;
 import com.chally.user.service.LoginService;
@@ -41,4 +41,12 @@ public class LoginController {
             return "redirect:/";
         }
 	}
+	
+    @GetMapping("/login")
+    public String loginPage(Model model, String error) {
+        if (error != null) {
+            model.addAttribute("error", "로그인 실패. 사용자 이름이나 비밀번호를 확인하세요.");
+        }
+        return "login"; // login.html 템플릿 페이지로 반환
+    }
 }
