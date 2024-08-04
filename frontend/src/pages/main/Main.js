@@ -4,12 +4,13 @@ import Box from '@mui/material/Box';
 import Drawer from '@mui/material/Drawer';
 import CssBaseline from '@mui/material/CssBaseline';
 
-const drawerWidth = 240;
+const hostUrl = process.env.REACT_APP_API_URL;
+
 const Main = () => {
   const [user, setUser] = useState(null);
 
   useEffect(() => {
-    axios.get('http://49.174.231.190:8080/home', { withCredentials: true })
+    axios.get(hostUrl + '/home', { withCredentials: true })
       .then(response => setUser(response.data))
       .catch(error => console.error('Error fetching user:', error));
   }, []);

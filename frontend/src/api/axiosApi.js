@@ -2,8 +2,10 @@
 
 import axios from 'axios';
 
+const apiUrl = process.env.REACT_APP_API_URL;
+
 const api = axios.create({
-  baseURL: 'http://localhost:8080/chally/api', // 서버 주소
+  baseURL: apiUrl + '/chally/api', // 서버 주소
 });
 
 api.interceptors.request.use((config) => {
