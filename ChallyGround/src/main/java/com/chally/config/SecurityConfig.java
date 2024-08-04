@@ -46,6 +46,6 @@ public class SecurityConfig {
 
 	@Bean
 	public WebSecurityCustomizer webSecurityCustomizer() {
-		return (web) -> web.ignoring().requestMatchers("/" ,"/index.html","/public/**", "/static/**", "/webjars/**");
+		return (web) -> web.ignoring().requestMatchers("/chally/chlogin" ,"/" ,"/index.html","/public/**", "/static/**", "/webjars/**");
 	}
 }
