@@ -34,6 +34,8 @@ public class UserService {
 	 *반환값: Map<String, Object>
 	***/
 	public Map<String, Object> modifyMyInfo(Map<String, String> request) {
+        HashMap<String, Object> map = new HashMap<>();
+        
 		//회원정보 가져오기
 		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 		CustomUserDetails userDetails = (CustomUserDetails) authentication.getPrincipal();
@@ -51,6 +53,11 @@ public class UserService {
 			e.printStackTrace();
 		}
         
+		if(name.equals("")) {
+			map.put("result", "회원정보 수정에 실패하였습니다.");
+			return map;
+		}
+		
         //VO객체 생성
         UserInfo record = new UserInfo();
         record.setId(userDetails.getId());
@@ -61,8 +68,6 @@ public class UserService {
         //DAO 실행
         int updateCheck = userDao.updateByPrimaryKeySelective(record);
         
-        
-        HashMap<String, Object> map = new HashMap<>();
         if(updateCheck == 1) {
             // 업데이트된 사용자 정보로 새로운 UserDetails 생성
             CustomUserDetails updatedUserDetails = new CustomUserDetails(userDetails.getUsername(), null, new ArrayList<>(), record.getName(), record.getTel(), userDetails.getOauthId(), userDetails.getId(), record.getBirth());
