@@ -1,9 +1,10 @@
 // craco.config.js
+const hostUrl = process.env.REACT_APP_API_URL;
 module.exports = {
     devServer: {
       proxy: {
         '/api': { // /api
-          target: 'http://49.174.231.190:8080',
+          target: hostUrl,
           changeOrigin: true,
           secure: false,
         },
