@@ -34,7 +34,7 @@ public class SecurityConfig {
 	@Bean
 	public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
 		http.authorizeHttpRequests(authorizeRequests -> authorizeRequests
-				.requestMatchers("/public/**", "/static/**", "/webjars/**").permitAll()
+				//.requestMatchers("/" ,"/index.html","/public/**", "/static/**", "/webjars/**").permitAll()
 				.anyRequest().authenticated())
 				.oauth2Login(oauth2Login -> oauth2Login.defaultSuccessUrl("/axios/login"))
 				.csrf(csrf -> csrf.disable())
@@ -46,6 +46,6 @@ public class SecurityConfig {
 
 	@Bean
 	public WebSecurityCustomizer webSecurityCustomizer() {
-		return (web) -> web.ignoring().requestMatchers("/resources/**");
+		return (web) -> web.ignoring().requestMatchers("/" ,"/index.html","/public/**", "/static/**", "/webjars/**");
 	}
 }
