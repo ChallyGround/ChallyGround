@@ -8,14 +8,11 @@ const ChallengeForm = () => {
     const [startDate, setStartDate] = useState('');
     const [endDate, setEndDate] = useState('');
 
-    const handleDecrease = () => {
-        if (participants > 1) {
-            setParticipants(participants - 1);
+    const handleParticipantsChange = (e) => {
+        const value = parseInt(e.target.value, 10);
+        if (!isNaN(value) && value > 0) {
+            setParticipants(value);
         }
-    };
-
-    const handleIncrease = () => {
-        setParticipants(participants + 1);
     };
 
     const handlePreview = () => {
@@ -53,15 +50,17 @@ const ChallengeForm = () => {
             </div>
             <div className="form-group">
                 <label htmlFor="content">챌린지 내용</label>
-                <EditorBox /> {}
+                <EditorBox /> 
             </div>
             <div className="form-group">
-                <label>참여 인원</label>
-                <div className="participants-input">
-                    <button type="button" onClick={handleDecrease}>-</button>
-                    <span>{participants}</span>
-                    <button type="button" onClick={handleIncrease}>+</button>
-                </div>
+                <label htmlFor="participants">참여 인원</label>
+                <input 
+                    type="number" 
+                    id="participants" 
+                    value={participants} 
+                    onChange={handleParticipantsChange} 
+                    min="1" 
+                />
             </div>
             <div className="form-group">
                 <label>기간</label>
