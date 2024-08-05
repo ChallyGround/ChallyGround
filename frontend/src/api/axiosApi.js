@@ -2,8 +2,10 @@
 
 import axios from 'axios';
 
+const apiUrl = process.env.REACT_APP_API_URL;
+
 const api = axios.create({
-  baseURL: 'http://localhost:8080/chally/api', // 서버 주소
+  baseURL: apiUrl + '/chally/api', // 서버 주소
 });
 
 api.interceptors.request.use((config) => {
@@ -21,7 +23,7 @@ api.interceptors.response.use((response) => {
 }, (error) => {
   if (error.response && error.response.status === 401) {
     // 401 Unauthorized 응답을 받으면 로그인 페이지로 리다이렉트
-    window.location.href = '/chlogin';
+    window.location.href = '/chally/chlogin';
   }
   return Promise.reject(error);
 });

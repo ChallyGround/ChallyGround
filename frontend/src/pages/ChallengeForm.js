@@ -1,16 +1,12 @@
-import React, { useState, useRef } from 'react';
-import { Editor } from '@toast-ui/react-editor';
-import '@toast-ui/editor/dist/toastui-editor.css';
-import '@toast-ui/editor/dist/toastui-editor-viewer.css';
+import React, { useState } from 'react';
 import './ChallengeForm.css';
+import EditorBox from './EditorBox'; 
 
 const ChallengeForm = () => {
     const [title, setTitle] = useState('');
-    const [content, setContent] = useState('');
     const [participants, setParticipants] = useState(2);
     const [startDate, setStartDate] = useState('');
     const [endDate, setEndDate] = useState('');
-    const editorRef = useRef(); // editorRef 선언
 
     const handleDecrease = () => {
         if (participants > 1) {
@@ -31,7 +27,7 @@ const ChallengeForm = () => {
     };
 
     const handleSubmit = () => {
-        if (title && content && startDate && endDate) {
+        if (title && startDate && endDate) {
             if (new Date(startDate) > new Date(endDate)) {
                 alert('시작일이 종료일보다 늦을 수 없습니다.');
                 return;
@@ -40,10 +36,6 @@ const ChallengeForm = () => {
         } else {
             alert('모든 필드를 채워주세요.');
         }
-    };
-
-    const handleEditorChange = () => {
-        setContent(editorRef.current.getInstance().getMarkdown());
     };
 
     return (
@@ -61,15 +53,7 @@ const ChallengeForm = () => {
             </div>
             <div className="form-group">
                 <label htmlFor="content">챌린지 내용</label>
-                <Editor
-                    initialValue={content}
-                    previewStyle="vertical"
-                    height="300px"
-                    initialEditType="wysiwyg"
-                    useCommandShortcut={true}
-                    ref={editorRef} // editorRef를 Editor에 전달
-                    onChange={handleEditorChange} // 에디터 내용 변경 시 호출되는 함수
-                />
+                <EditorBox /> {}
             </div>
             <div className="form-group">
                 <label>참여 인원</label>

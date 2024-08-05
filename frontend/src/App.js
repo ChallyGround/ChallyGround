@@ -28,8 +28,8 @@ function App() {
             <Route path="/chally/editUserInfo" element={<EditUserInfo />} />
             <Route path="/chally/login-success" element={<LoginSuccess />} />
             <Route path="/chally/ChallengeForm" element={<ChallengeForm />} />
-            <Route path="/chally/mainPage" element={<Main_page/>} />
-            <Route path="/chally/chally" element={<Chally/>} />
+            <Route path="/chally/" element={<Main_page/>} />
+            <Route path="/chally/growChally" element={<Chally/>} />
         </Routes>
         </div>
       </div>

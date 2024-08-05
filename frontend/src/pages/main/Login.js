@@ -1,8 +1,10 @@
 import React from 'react';
 
+const hostUrl = process.env.REACT_APP_API_URL;
+
 const Login = () => {
   const googleLogin = () => {
-    window.location.href = 'http://localhost:8080/chally/oauth2/authorization/google';
+    window.location.href = hostUrl + '/chally/oauth2/authorization/google';
   };
 
   return (
