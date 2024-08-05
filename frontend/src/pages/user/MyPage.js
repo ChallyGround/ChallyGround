@@ -5,13 +5,21 @@ import Button from '@mui/material/Button';
 import api from '../../api/axiosApi';
 
 function MyPage() {
+    const hostUrl = process.env.REACT_APP_API_URL;
+
     const navigate = useNavigate();
     const [profileImage, setProfileImage] = useState(null);
+    const [name, setName] = useState(null);
 
     useEffect(() => {
-        api.post("/viewMyInfo")
+        api.get("/viewMyInfo")
             .then(response => {
-                setProfileImage(response.data.profileImageUrl);
+                const imagePath = response.data.profileImage;
+                const encodedImagePath = encodeURIComponent(imagePath); // URL 인코딩
+                const imageUrl = hostUrl + `/chally/uploads/${encodedImagePath}`;
+                setProfileImage(imageUrl);
+                
+                setName(response.data.name);
             });
     }, []);
 
@@ -23,9 +31,9 @@ function MyPage() {
         <div className="main">
             <div>
                 <div className="user_box">
-                    <p className="user_name">chally</p>
+                    <p className="user_name">{name}</p>
                     <div className="user_picture">
-                        {profileImage && <img src={profileImage} alt="Profile" style={{ width: '100px', height: '100px' }} />}
+                        {profileImage && <img src={profileImage} alt="Profile" style={{ width: '100%', height: '100%', borderRadius: '120px' }} />}
                     </div>
                     <div className="form">
                         <Button type="button" variant="contained" onClick={editUserInfo}>수정하기</Button>

@@ -5,7 +5,7 @@
 	
 	<!-- Database Connection Configuration -->
 	<jdbcConnection driverClass="com.mysql.cj.jdbc.Driver"
-						connectionURL="jdbc:mysql://localhost:3306/challyground"
+						connectionURL="jdbc:mysql://15.164.246.23:3306/challyground"
 						userId="Chally" 
 						password="cofflrmfkdnsem1234!" />
 						
@@ -27,8 +27,8 @@
                                               
 	<!-- Table Configuration -->
 <!--     <table tableName="spring_session"/> -->
-<!-- 		<table tableName="user_info"/> -->
-		<table tableName="challenge"/>
+		<table tableName="user_info"/>
+<!-- 		<table tableName="challenge"/> -->
 	</context>
 	
 	                         

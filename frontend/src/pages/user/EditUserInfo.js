@@ -10,6 +10,8 @@ import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 
 function EditUserInfo() {
+    const hostUrl = process.env.REACT_APP_API_URL;
+
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
     const [tel, setTelephone] = useState('');
@@ -18,14 +20,18 @@ function EditUserInfo() {
     const [preview, setPreview] = useState(null);
 
     useEffect(() => {
-        api.post("/viewMyInfo")
+        api.get("/viewMyInfo")
             .then(response => {
                 setName(response.data.name);
                 setEmail(response.data.email);
                 setTelephone(response.data.tel);
                 const birthDate = dayjs(response.data.birth);
                 setBirth(birthDate.isValid() ? birthDate : null);
-                setPreview(response.data.profileImageUrl);
+
+                const imagePath = response.data.profileImage;
+                const encodedImagePath = encodeURIComponent(imagePath); // URL 인코딩
+                const imageUrl = hostUrl + `/chally/uploads/${encodedImagePath}`;
+                setPreview(imageUrl);
             })
     }, []);
 

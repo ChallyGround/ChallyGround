@@ -16,7 +16,8 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
-import com.chally.filter.JwtAuthenticationFilter;
+import com.chally.component.JwtAuthenticationFilter;
+import com.chally.component.JwtUtil;
 import com.chally.user.service.UserDetailsServiceImpl;
 
 @Configuration

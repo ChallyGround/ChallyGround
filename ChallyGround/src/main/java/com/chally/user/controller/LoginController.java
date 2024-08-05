@@ -15,7 +15,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
-import com.chally.config.JwtUtil;
+import com.chally.component.JwtUtil;
 import com.chally.user.service.LoginService;
 
 @Controller

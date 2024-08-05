@@ -16,10 +16,11 @@ public class CustomUserDetails implements UserDetails {
     private Date birth; // 생일
     private String oauthId; // 구글(sub)
     private int id; // PK값
+    private String profileImage; // PK값
 
     // Constructor
     public CustomUserDetails(String email, String password, Collection<? extends GrantedAuthority> authorities,
-                             String name,String tel ,String oauthId, int id, Date birth) {
+                             String name,String tel ,String oauthId, int id, Date birth, String profileImage) {
         this.email = email; // 이메일
         this.password = password;
         this.authorities = authorities;
@@ -28,6 +29,7 @@ public class CustomUserDetails implements UserDetails {
         this.oauthId = oauthId;
         this.id = id;
         this.birth = birth;
+        this.profileImage = profileImage;
     }
 
     @Override
@@ -84,5 +86,9 @@ public class CustomUserDetails implements UserDetails {
     
     public Date getBirth() {
     	return birth;
+    }
+    
+    public String getProfileImage() {
+    	return profileImage;
     }
 }
