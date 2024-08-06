@@ -8,11 +8,14 @@ body {
 
 /* 헤더 스타일 */
 header {
-    position: relative; /* 네비게이션 바의 위치를 설정 */
-    width: 100%;
+    position: fixed; /* 네비게이션 바의 위치를 설정 */
+    width: 70%;
+       z-index: 100;
     background-color: #ffffff; /* 헤더 배경색 */
+    top: 0;
     color: #000000; /* 헤더 텍스트 색상 */
     border-bottom: 1px solid #ddd; /* 헤더 하단의 경계선 */
+    margin: 5rem 26rem;
 }
 
 .header-content {
@@ -47,14 +50,14 @@ header {
     display: flex; /* 네비게이션 항목을 가로로 배치 */
     align-items: center; /* 수직 중앙 정렬 */
     background-color: #ffffff; /* 네비게이션 바 배경색 */
-    padding: 10px 20px; /* 네비게이션 바 내부 여백 */
+    padding: 15px 20px 15px; /* 네비게이션 바 내부 여백 */
     border-bottom: 1px solid #ddd; /* 네비게이션 바 하단의 경계선 */
     position: relative; /* 카테고리 메뉴 위치 설정을 위한 상대 위치 */
 }
 
 .nav-list {
     list-style: none; /* 리스트 스타일 제거 */
-    margin: 0;
+    margin: 0 4rem;
     padding: 0;
     display: flex; /* 네비게이션 항목을 가로로 배치 */
     gap: 20px; /* 항목 간의 간격 */
@@ -207,18 +210,20 @@ header {
     flex-direction: row; /* 콘텐츠 방향 설정 */
     gap: 20px; /* 콘텐츠 간의 간격 */
     padding: 20px; /* 콘텐츠 내부 여백 */
+    margin-top: 6rem;
 }
 
 /* 왼쪽 콘텐츠 컨테이너 스타일 */
 .left-content {
     flex: 1; /* 왼쪽 콘텐츠가 남은 공간을 채우도록 설정 */
+    margin-left: 6rem;
 }
 
-/* 카테고리 컨테이너 스타일 */
-.category-container {
-    display: flex; /* 카테고리 항목을 가로로 배치 */
-    gap: 20px; /* 항목 간의 간격 */
-    padding: 20px 0; /* 카테고리 컨테이너의 상하 여백 */
+.right-content {
+    width: 28rem;
+    position: relative;
+    margin-left: 5rem;
+    margin-right: 2rem;
 }
 
 /* 챌린지 콘텐츠 스타일 */
@@ -238,7 +243,7 @@ header {
 
 .challenge-items {
     display: flex; /* 챌린지 항목을 가로로 배치 */
-    gap: 20px; /* 항목 간의 간격 */
+    gap: 3rem; /* 항목 간의 간격 */
     flex-wrap: nowrap; /* 항목이 줄바꿈 없이 가로로 배치 */
     overflow-x: auto; /* 가로 스크롤 추가 */
 }
@@ -302,6 +307,7 @@ header {
     margin: 20px 0; /* 인기 챌린지 영역의 상하 여백 */
     padding: 10px; /* 인기 챌린지 영역 내부 여백 */
     max-width: 800px; /* 인기 챌린지 영역 최대 너비 */
+    height: 1000px;
     background-color: #f9f9f9; /* 인기 챌린지 영역 배경색 */
     border: 1px solid #ddd; /* 인기 챌린지 영역 경계선 색상 */
     border-radius: 8px; /* 인기 챌린지 영역 모서리 둥글게 */
@@ -331,25 +337,25 @@ header {
 }
 
 /* 인기 챌린지 항목 스타일 */
-.popular-challenges .challenge-items {
+.popular-challenges .challenge-items-2 {
     display: flex; /* 인기 챌린지 항목을 세로로 배치 */
     flex-direction: column; /* 항목 세로 배치 */
-    gap: 10px; /* 항목 간의 간격 */
+    gap: 2rem; /* 항목 간의 간격 */
 }
 
-.popular-challenges .challenge-item {
+.popular-challenges .challenge-item-2 {
     display: flex; /* 인기 챌린지 항목을 가로로 배치 */
     align-items: center; /* 항목의 내용 수직 중앙 정렬 */
     gap: 15px; /* 이미지와 정보 사이의 간격 */
-    padding: 10px; /* 항목 내부 여백 */
+    padding: 15px; /* 항목 내부 여백 */
     border: 1px solid #ddd; /* 항목 경계선 색상 */
     border-radius: 8px; /* 항목 모서리 둥글게 */
     background-color: #ffffff; /* 항목 배경색 */
 }
 
-.popular-challenges .challenge-item img {
-    width: 140px; /* 이미지 너비 증가 */
-    height: 100px; /* 이미지 높이 증가 */
+.popular-challenges .challenge-item-2 img {
+    width: 11rem; /* 이미지 너비 증가 */
+    height: 10rem; /* 이미지 높이 증가 */
     object-fit: cover; /* 이미지 비율 유지하며 자르기 */
     border-radius: 8px; /* 이미지 모서리 둥글게 */
 }
@@ -358,6 +364,13 @@ header {
     display: flex; /* 챌린지 정보 가로로 배치 */
     flex-direction: column; /* 챌린지 정보를 세로로 배치 */
     gap: 5px; /* 정보 간의 간격 */
+}
+
+.challenge-info-2 {
+    display: flex; /* 챌린지 정보 가로로 배치 */
+    position: relative;
+    flex-direction: column; /* 챌린지 정보를 세로로 배치 */
+    padding-left: 2rem;
 }
 
 .challenge-info h3 {
@@ -372,10 +385,23 @@ header {
     margin: 0; /* 설명의 상하 여백 제거 */
 }
 
-.challenge-rank,
-.challenge-participants {
-    font-size: 14px; /* 랭킹 및 참여자 수 폰트 크기 */
+.challenge-rank {
+    display: flex;
+    position: relative;
+    font-size: 1.5rem; /* 랭킹 및 참여자 수 폰트 크기 */
     color: #e74c3c; /* 랭킹 및 참여자 수 텍스트 색상 */
+    text-align: left;
+
+}
+
+.rank-info {
+    text-align: left;
+    line-height: 20px;
+}
+
+.challenge-participants {
+    color: #e74c3c; /* 랭킹 및 참여자 수 텍스트 색상 */
+
 }
 
 .current-time {

@@ -2,7 +2,8 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
 import './css/App.css';
 
-import Header from './components/Header';
+import Header from './pages/Header';
+import DropdownMenu from './components/DropdownMenu';
 import Sidebar from './components/SideBar';
 import Login from './pages/main/Login';
 import Main from './pages/main/Main';
@@ -18,7 +19,7 @@ function App() {
   return (
     <div className="app-container">
       <div className="app-content">
-        <Sidebar />
+        <Header />
         <div className="main-content">
         <Routes>
             <Route path="/chally/chlogin" element={<Login />} />
@@ -30,6 +31,7 @@ function App() {
             <Route path="/chally/ChallengeForm" element={<ChallengeForm />} />
             <Route path="/chally/" element={<Main_page/>} />
             <Route path="/chally/growChally" element={<Chally/>} />
+            <Route path="/chally/dropdownmenu" element={<DropdownMenu />} />
         </Routes>
         </div>
       </div>
