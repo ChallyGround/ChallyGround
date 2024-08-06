@@ -16,6 +16,8 @@ header {
     color: #000000; /* 헤더 텍스트 색상 */
     border-bottom: 1px solid #ddd; /* 헤더 하단의 경계선 */
     margin: 5rem 26rem;
+    padding-top: 5rem;
+    margin-top: 0rem;
 }
 
 .header-content {
@@ -238,7 +240,7 @@ header {
 .featured-challenges h2 {
     font-size: 24px; /* 챌린지 제목 폰트 크기 */
     color: #000000; /* 챌린지 제목 텍스트 색상 */
-    margin-bottom: 20px; /* 챌린지 제목과 내용 간의 간격 */
+    margin-bottom: 30px; /* 챌린지 제목과 내용 간의 간격 */
 }
 
 .challenge-items {

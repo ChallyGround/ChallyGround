@@ -39,19 +39,20 @@ function MyPage() {
                         <Button type="button" variant="contained" onClick={editUserInfo}>수정하기</Button>
                     </div>
                 </div>
-
-                <div className="ing">참여중인 챌린지
-                    <div className="ing-1"></div>
-                    <div className="ing-2"></div>
-                </div>
-                <div className="finish">참여 완료 챌린지
-                    <div className="finish-1"></div>
-                    <div className="finish-2"></div>
-                    <div className="finish-3"></div>
-                </div>
-                <div className="soon">참여 예정 챌린지
-                    <div className="soon-1"></div>
-                    <div className="soon-2"></div>
+                <div className="challenge-box">
+                   <div className="ing">참여중인 챌린지
+                      <div className="ing-1"></div>
+                      <div className="ing-2"></div>
+                   </div>
+                   <div className="finish">참여 완료 챌린지
+                      <div className="finish-1"></div>
+                      <div className="finish-2"></div>
+                      <div className="finish-3"></div>
+                    </div>
+                    <div className="soon">참여 예정 챌린지
+                      <div className="soon-1"></div>
+                      <div className="soon-2"></div>
+                    </div>
                 </div>
             </div>
         </div>

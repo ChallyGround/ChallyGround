@@ -42,7 +42,6 @@ function MainPage() {
               <button className="slider-button next" onClick={() => setCurrentSlide((currentSlide + 1) % slides.length)}>▶</button>
             </div>
           </div>
-
           <div className="featured-challenges">
             <h2>주목할 만한 챌린지</h2>
             <div className="challenge-items">
