@@ -65,11 +65,10 @@ public class UserService {
 		
 		MultipartFile profileImage = (MultipartFile) request.get("profileImage"); //yyyy-mm-dd
 		String fileName = null;
-		try {
-			fileName = fileStorageService.storeFile(profileImage);
-		} catch (java.io.IOException e) {
-			e.printStackTrace();
-		}
+		/*
+		 * try { fileName = fileStorageService.storeFile(profileImage); } catch
+		 * (java.io.IOException e) { e.printStackTrace(); }
+		 */
 
         
 		if(name.equals("")) {

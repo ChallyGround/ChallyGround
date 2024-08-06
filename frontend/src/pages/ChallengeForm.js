@@ -5,8 +5,8 @@ import EditorBox from './EditorBox';
 const ChallengeForm = () => {
     const [title, setTitle] = useState('');
     const [participants, setParticipants] = useState(2);
-    const [startDate, setStartDate] = useState('');
-    const [endDate, setEndDate] = useState('');
+    const [startDt, setstartDt] = useState('');
+    const [endDt, setendDt] = useState('');
 
     const handleParticipantsChange = (e) => {
         const value = parseInt(e.target.value, 10);
@@ -23,12 +23,15 @@ const ChallengeForm = () => {
         alert('임시저장 기능은 아직 구현되지 않았습니다.');
     };
 
-    const handleSubmit = () => {
-        if (title && startDate && endDate) {
-            if (new Date(startDate) > new Date(endDate)) {
+    const handleSubmit = async () => {
+        if (title && startDt && endDt) {
+            if (new Date(startDt) > new Date(endDt)) {
                 alert('시작일이 종료일보다 늦을 수 없습니다.');
                 return;
             }
+
+            const result = await api.post('/saveChallenge', { title, content, minJoin, maxJoin, startDt, endDt });
+
             alert('챌린지가 성공적으로 등록되었습니다!');
         } else {
             alert('모든 필드를 채워주세요.');
@@ -67,13 +70,13 @@ const ChallengeForm = () => {
                 <div className="date-input">
                     <input 
                         type="date" 
-                        value={startDate} 
-                        onChange={(e) => setStartDate(e.target.value)} 
+                        value={startDt} 
+                        onChange={(e) => setstartDt(e.target.value)} 
                     />
                     <input 
                         type="date" 
-                        value={endDate} 
-                        onChange={(e) => setEndDate(e.target.value)} 
+                        value={endDt} 
+                        onChange={(e) => setendDt(e.target.value)} 
                     />
                 </div>
             </div>
