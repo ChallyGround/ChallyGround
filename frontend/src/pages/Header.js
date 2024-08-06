@@ -17,7 +17,7 @@ function Header() {
     <header>
       <div className="header-content">
         <a href="main_page.html" className="logo">
-          <img src="logo.png" alt="챌리그라운드 로고" />
+          <img src="../../public/logo.png" alt="챌리그라운드 로고" />
         </a>
         <div className="header-buttons">
           <button id="challenge-upload" className="btn">챌린지 올리기</button>
