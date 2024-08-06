@@ -14,6 +14,7 @@ import EditUserInfo from './pages/user/EditUserInfo';
 import ChallengeForm from './pages/ChallengeForm';
 import Main_page from './pages/main_page';
 import Chally from './pages/chally';
+import ChallengePage from './pages/ChallengePage';
 
 function App() {
   return (
@@ -32,6 +33,7 @@ function App() {
             <Route path="/chally/" element={<Main_page/>} />
             <Route path="/chally/growChally" element={<Chally/>} />
             <Route path="/chally/dropdownmenu" element={<DropdownMenu />} />
+            <Route path="/chally/challengepage" elemnet={<ChallengePage />} />
         </Routes>
         </div>
       </div>

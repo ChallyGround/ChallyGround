@@ -1,0 +1,57 @@
+.challenges-page {
+    padding: 20px;
+}
+
+.view-buttons {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.view-buttons button {
+    padding: 10px;
+    cursor: pointer;
+}
+
+.challenge-categories {
+    margin-top: 20px;
+}
+
+.challenge-categories h3 {
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+.challenges-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.challenge-item {
+    border: 1px solid #ddd;
+    padding: 10px;
+    text-align: center;
+}
+
+.challenge-item img {
+    max-width: 100%;
+    height: auto;
+}
+
+.challenge-item.grid {
+    flex: 1 1 calc(33.333% - 10px);
+    box-sizing: border-box;
+}
+
+.challenge-item.list {
+    flex: 1 1 100%;
+    display: flex;
+    align-items: center;
+    box-sizing: border-box;
+}
+
+.challenge-item.list img {
+    width: 150px;
+    margin-right: 20px;
+}
