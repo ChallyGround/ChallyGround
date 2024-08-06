@@ -21,6 +21,7 @@ import org.springframework.stereotype.Service;
 import com.chally.dao.ChallengeMapper;
 import com.chally.dao.UserInfoMapper;
 import com.chally.user.CustomUserDetails;
+import com.chally.vo.Challenge;
 import com.chally.vo.UserInfo;
 
 @Service
@@ -60,23 +61,15 @@ public class ChallengeService {
 		}
 		
         //VO객체 생성
-        UserInfo record = new UserInfo();
-        record.setId(userDetails.getId());
-        record.setName(name);
-        record.setTel(tel);
-        record.setBirth(birthFormat);
+		//chall
+		Challenge record = new Challenge();
+		record.set
         
         //DAO 실행
         int updateCheck = challengeDao.insertSelective(null);
         
         if(updateCheck == 1) {
-            // 업데이트된 사용자 정보로 새로운 UserDetails 생성
-            CustomUserDetails updatedUserDetails = new CustomUserDetails(userDetails.getUsername(), null, new ArrayList<>(), record.getName(), record.getTel(), userDetails.getOauthId(), userDetails.getId(), record.getBirth(), record.getProfileImage());
-            // 새로운 Authentication 객체 생성
-            Authentication newAuth = new UsernamePasswordAuthenticationToken(updatedUserDetails, null, updatedUserDetails.getAuthorities());
-            // SecurityContext에 새로운 Authentication 객체 설정
-            SecurityContextHolder.getContext().setAuthentication(newAuth);
-            
+
         	map.put("result", "회원정보가 수정되었습니다.");
         	
         } else {
