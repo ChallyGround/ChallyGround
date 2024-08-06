@@ -27,8 +27,8 @@
                                               
 	<!-- Table Configuration -->
 <!--     <table tableName="spring_session"/> -->
-		<table tableName="user_info"/>
-<!-- 		<table tableName="challenge"/> -->
+<!--		<table tableName="user_info"/>-->
+ 		<table tableName="challenge"/> 
 	</context>
 	
 	                         

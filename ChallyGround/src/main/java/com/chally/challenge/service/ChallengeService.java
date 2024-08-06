@@ -43,30 +43,38 @@ public class ChallengeService {
 		CustomUserDetails userDetails = (CustomUserDetails) authentication.getPrincipal();
 		
 		//파라미터 받기
-        String name = request.get("name");
-        String tel = request.get("tel");
-        String birth = request.get("birthFormat"); //yyyy-mm-dd
+        String title = request.get("title");
+        String content = request.get("content");
+        int minJoin = Integer.parseInt(request.get("minJoin"));
+        int maxJoin = Integer.parseInt(request.get("maxJoin"));
+        String startDt = request.get("startDt");
+        String endDt = request.get("endDt"); 
         
         SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
-        Date birthFormat = null;
+        Date startDtFormat = null;
+        Date endDtFormat = null;
 		try {
-			birthFormat = formatter.parse(birth);
+			startDtFormat = formatter.parse(startDt);
+			endDtFormat = formatter.parse(endDt);
 		} catch (ParseException e) {
 			e.printStackTrace();
 		}
         
-		if(name.equals("")) {
-			map.put("result", "회원정보 수정에 실패하였습니다.");
-			return map;
-		}
+		
 		
         //VO객체 생성
 		//chall
 		Challenge record = new Challenge();
-		record.set
+		record.setTitle(title);
+		record.setContent(content);
+		record.setMinJoin(minJoin);
+		record.setMaxJoin(maxJoin);
+		record.setStartDt(startDtFormat);
+		record.setEndDt(endDtFormat);
+		record.setUserId(userDetails.getId());
         
         //DAO 실행
-        int updateCheck = challengeDao.insertSelective(null);
+        int updateCheck = challengeDao.insertSelective(record);
         
         if(updateCheck == 1) {
 
