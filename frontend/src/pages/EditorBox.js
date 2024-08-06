@@ -7,9 +7,9 @@ import colorSyntax from '@toast-ui/editor-plugin-color-syntax';
 import ContentsViewer from './ContentsViewer';
 import '@toast-ui/editor/dist/toastui-editor-viewer.css';
 
-function EditorBox() {
+function EditorBox(props) {
     const [isViewing, setIsViewing] = useState(false);
-    const [editorContent, setEditorContent] = useState(' ');
+    //const [editorContent, props.setContent] = useState(' ');
 
     const editorRef = useRef();
 
@@ -19,7 +19,7 @@ function EditorBox() {
 
     const handleEditorChange = () => {
         const editorInstance = editorRef.current.getInstance();
-        setEditorContent(editorInstance.getHTML());
+        props.setContent(editorInstance.getHTML());
     };
 
     const onUploadImage = async (blob, callback) => {
@@ -50,11 +50,11 @@ function EditorBox() {
     return (
         <div className="edit_wrap">
             {isViewing ? (
-                <ContentsViewer contents={editorContent} /> 
+                <ContentsViewer contents={props.content} /> 
             ) : (
                 <Editor
                     ref={editorRef}
-                    initialValue={editorContent}
+                    initialValue={props.content}
                     previewStyle="vertical"
                     height="600px"
                     initialEditType="wysiwyg"

@@ -1,17 +1,28 @@
 import React, { useState } from 'react';
 import './ChallengeForm.css';
 import EditorBox from './EditorBox'; 
+import api from '../api/axiosApi';
+
 
 const ChallengeForm = () => {
     const [title, setTitle] = useState('');
-    const [participants, setParticipants] = useState(2);
-    const [startDt, setstartDt] = useState('');
-    const [endDt, setendDt] = useState('');
+    const [minJoin, setminJoin] = useState(1);
+    const [maxJoin, setmaxJoin] = useState(2);
+    const [startDt, setStartDt] = useState('');
+    const [endDt, setEndDt] = useState('');
+    const [content, setContent] = useState('');
 
-    const handleParticipantsChange = (e) => {
+    const handleminJoinChange = (e) => {
         const value = parseInt(e.target.value, 10);
         if (!isNaN(value) && value > 0) {
-            setParticipants(value);
+            setminJoin(value);
+        }
+    };
+
+    const handlemaxJoinChange = (e) => {
+        const value = parseInt(e.target.value, 10);
+        if (!isNaN(value) && value >= minJoin) {
+            setmaxJoin(value);
         }
     };
 
@@ -27,6 +38,11 @@ const ChallengeForm = () => {
         if (title && startDt && endDt) {
             if (new Date(startDt) > new Date(endDt)) {
                 alert('시작일이 종료일보다 늦을 수 없습니다.');
+                return;
+            }
+
+            if (maxJoin < minJoin) {
+                alert('최대 인원은 최소 인원보다 적을 수 없습니다.');
                 return;
             }
 
@@ -53,16 +69,26 @@ const ChallengeForm = () => {
             </div>
             <div className="form-group">
                 <label htmlFor="content">챌린지 내용</label>
-                <EditorBox /> 
+                <EditorBox setContent={setContent} content={content}/>
             </div>
             <div className="form-group">
-                <label htmlFor="participants">참여 인원</label>
+                <label htmlFor="minJoin">최소 참여 인원</label>
                 <input 
                     type="number" 
-                    id="participants" 
-                    value={participants} 
-                    onChange={handleParticipantsChange} 
+                    id="minJoin" 
+                    value={minJoin} 
+                    onChange={handleminJoinChange} 
                     min="1" 
+                />
+            </div>
+            <div className="form-group">
+                <label htmlFor="maxJoin">최대 참여 인원</label>
+                <input 
+                    type="number" 
+                    id="maxJoin" 
+                    value={maxJoin} 
+                    onChange={handlemaxJoinChange} 
+                    min={minJoin} 
                 />
             </div>
             <div className="form-group">
@@ -71,12 +97,12 @@ const ChallengeForm = () => {
                     <input 
                         type="date" 
                         value={startDt} 
-                        onChange={(e) => setstartDt(e.target.value)} 
+                        onChange={(e) => setStartDt(e.target.value)} 
                     />
                     <input 
                         type="date" 
                         value={endDt} 
-                        onChange={(e) => setendDt(e.target.value)} 
+                        onChange={(e) => setEndDt(e.target.value)} 
                     />
                 </div>
             </div>
